@@ -2,9 +2,7 @@
 
 Zet hier alles waar de website op gebouwd wordt. De bouwer haalt alle inhoud uit deze map en verzint niets zelf. Het maakt niet uit hoe netjes het is: sleep alles erin, het wordt in fase 1 uitgezocht.
 
-**Let op: deze repository is openbaar.** Iedereen kan zien wat je hier neerzet. Wil je dat niet, maak de repo dan eerst privé (Settings, onderaan bij Danger Zone, Change visibility). Of zet de bestanden in Google Drive, in een map met Briesje in de naam.
-
-**Zet hier nooit** wachtwoorden, API-sleutels of `.env`-bestanden neer. Die zitten vaak in de code van een oude site.
+**Zet hier nooit** wachtwoorden, API-sleutels of `.env`-bestanden neer, ook niet in een privé repo. Die zitten vaak in de code van een oude site.
 
 ## Uploaden via GitHub
 
@@ -12,13 +10,16 @@ Zet hier alles waar de website op gebouwd wordt. De bouwer haalt alle inhoud uit
 2. Klik op "Add file" en dan "Upload files".
 3. Sleep je bestanden of mappen erin en klik op "Commit changes".
 
+Een los bestand mag maximaal 25 MB zijn. Grotere bestanden, zoals een drukbestand of video, kun je in Google Drive zetten in een map met Briesje in de naam.
+
 ## Wat erin moet
 
 1. **De oude site.** De code, of screenshots van elke pagina op desktop en mobiel. Een lijstje met wat je er slecht aan vond is heel nuttig.
 2. **Verhalen.** De volledige tekst per verhaal, in welk formaat dan ook. Graag met de volgorde.
-3. **Producten.** Per product de naam, prijs, beschrijving en foto's. Dus het boek, de knuffels en de accessoires. Bij knuffels ook de gegevens van de leverancier en de CE- of veiligheidsdocumenten als je die hebt.
-4. **Beeld.** Alles wat er al is: tekeningen, schetsen, foto's van knuffels, een kaftontwerp.
-5. **Huisstijl.** Logo, kleuren en lettertypen, als die er zijn.
-6. **Over Briesje.** Wat het is, voor welke leeftijd en wie erachter zit.
-7. **Bedrijfsgegevens.** Bedrijfsnaam, KvK, btw-nummer, retouradres en contactgegevens.
-8. **Voorbeelden.** Links of screenshots van sites of boeken waarvan je de sfeer mooi vindt.
+3. **Het boek.** Het drukbestand (pdf) van kaft en binnenwerk. Is dat er niet, dan een scan van de kaft, rug en achterkant.
+4. **Knuffels.** Vrijstaande foto's (zonder achtergrond), vanuit een paar hoeken. Plus naam, prijs en beschrijving, de gegevens van de leverancier en de CE- en veiligheidsdocumenten.
+5. **Accessoires.** Per product de naam, prijs, beschrijving en foto's.
+6. **Huisstijl.** Logo, kleuren en lettertypen, als die er zijn.
+7. **Over Briesje.** Wat het is, voor welke leeftijd en wie erachter zit.
+8. **Bedrijfsgegevens.** Bedrijfsnaam, KvK, btw-nummer, retouradres en contactgegevens.
+9. **Voorbeelden.** Links of screenshots van sites of boeken waarvan je de sfeer mooi vindt.

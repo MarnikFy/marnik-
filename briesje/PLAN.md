@@ -12,42 +12,46 @@ Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "
 | Lezen | In het 3D boek, pagina's buigen om bij het bladeren |
 | Doel | Verkopen: het boek, knuffels en accessoires |
 | Webshop | Shopify, nieuwe winkel |
+| Producten | Bestaan al: het boek, de knuffels en de accessoires |
 | Verhalen | Bestaan alleen als tekst |
 | Oude site en bestanden | Staan lokaal, moeten nog geüpload worden |
+| Repository | Privé repo `briesje`, los van andere projecten |
 
 ## Waarom de vorige site "AI" oogde, en wat we anders doen
 
 De oude site heb ik nog niet gezien, dus dit is nog geen analyse daarvan. Dit zijn de bekende oorzaken van die uitstraling, en die sluiten we vooraf uit:
 
 * **Generiek stramien.** Een grote kop met een kleurverloop, drie kaartjes met icoontjes, overal dezelfde fade-in. Wij bouwen de pagina rond één sterk idee: het boek. Alles daaromheen is rustig.
-* **AI-plaatjes.** Personages die per plaatje anders uitzien, te glad en te glanzend. Hoe we met beeld omgaan staat hieronder bij de belangrijkste beslissing.
+* **AI-plaatjes.** Personages die per plaatje anders uitzien, te glad en te glanzend. Wij gebruiken de echte producten als beeld, zie "Beeld" hieronder.
 * **Standaard typografie.** Overal hetzelfde schreefloze lettertype. Wij kiezen een letter die bij een kinderboek past en zetten de tekst met zorg, zoals in een echt boek.
 * **Holle teksten.** Zinnen als "Ontdek de magische wereld van". Teksten komen uit jullie bestanden of van jullie zelf, en anders staat er niets.
 * **Verzonnen inhoud.** De bouwer verzint niets. Ontbreekt er iets, dan wordt het gevraagd.
 
 Tegen fouten: elke fase eindigt met een controle door jou, voordat de volgende begint. Er komt ook een vaste testlijst (zie fase 6).
 
-## De belangrijkste beslissing: beeld
+## Beeld: het echte product is het beeld
 
-De verhalen zijn alleen tekst. Maar het 3D boek heeft een kaft nodig, de bladzijden hebben beeld nodig en de poppetjes moeten ergens op gebaseerd zijn. Dit bepaalt meer dan wat ook of de site echt of "AI" oogt.
+Alle producten bestaan al. Dat lost het grootste risico op, want we hoeven geen beeld te verzinnen. We laten zien wat je verkoopt.
 
-| Optie | Voordeel | Nadeel |
-|---|---|---|
-| **A. Illustrator inhuren** | Uniek, consistent, past bij een echt boek. Dezelfde tekeningen dienen voor boek, site en knuffels. | Kost geld en een paar weken tijd |
-| **B. Knuffels fotograferen als personages** | Echt en tastbaar, nul AI-uitstraling, en je laat meteen het product zien dat je verkoopt | Kan alleen als de knuffels al bestaan. Voor de kaft is alsnog ontwerp nodig. |
-| **C. AI-beeld met strakke stijlgids** | Snel en goedkoop | Grote kans op precies de uitstraling die je niet wilt. Personages blijven lastig consistent. Bij commercieel gebruik is het auteursrecht op AI-beeld onzeker. |
+* **Het 3D boek is een kopie van het echte boek.** Dezelfde kaft, rug en achterkant, gemaakt van een drukbestand of een goede scan. Wie op de site het boek openslaat, ziet het boek dat thuis op de mat valt. Dat verkoopt beter dan welke illustratie ook.
+* **De knuffels zijn de poppetjes.** Vrijstaand gefotografeerd (zonder achtergrond), vanuit een paar hoeken. Ze staan naast het boek in de hero en komen tevoorschijn als het boek opengaat. Tik op een knuffel en je gaat naar de productpagina.
+* **Accessoires** krijgen gewone, goede productfoto's in de shop.
+* **Geen AI-beeld**, behalve tijdelijk als placeholder tijdens de bouw, en dan duidelijk gemarkeerd.
 
-**Advies:** B als de knuffels al bestaan, aangevuld met een illustrator voor de kaft en een paar sfeerbeelden. Bestaan ze nog niet, dan A. De knuffels moeten dan toch ontworpen worden, en daar dient dezelfde illustrator voor. C alleen voor tijdelijke placeholders tijdens de bouw.
+Waar het nog van afhangt:
+1. **Hebben we een drukbestand of scan van de kaft?** Zonder die krijgt het 3D boek geen echte kaft. Een foto met de telefoon is te weinig: dan zie je glans en vertekening.
+2. **Zijn er goede vrijstaande foto's van de knuffels?** Anders moeten die gemaakt worden. Dat kan met een lichtbak of een wit laken bij daglicht, maar een productfotograaf is een halve dag werk en het verschil zie je.
+3. **Staan er tekeningen in het boek, of alleen tekst?** Bij alleen tekst zetten we de bladzijden net zo mooi als het gedrukte boek. Een knuffel verschijnt dan naast de pagina en niet erin, zodat het 3D boek hetzelfde blijft als het product.
 
-Tot dit beslist is, bouwen we met duidelijk herkenbare placeholders. Het boek zelf (vorm, beweging, bladeren) staat los van het beeld en kan dus al gebouwd worden.
+Het boek zelf (vorm, beweging, bladeren) staat los van het beeld en kan dus al gebouwd worden.
 
 ## De ervaring
 
 ### Homepage
-1. **Laden.** Er staat direct een stilstaand beeld van het dichte boek. Zodra het 3D-deel geladen is, neemt dat het naadloos over. Geen laadbalk, geen leeg scherm.
+1. **Laden.** Er staat direct een stilstaand beeld van het dichte boek, met de knuffels ernaast. Zodra het 3D-deel geladen is, neemt dat het naadloos over. Geen laadbalk, geen leeg scherm.
 2. **Eerste indruk.** De camera beweegt eenmalig in ongeveer 1,5 seconde naar het boek toe en komt tot rust. Bij een volgend bezoek slaan we dit over.
 3. **Rust.** Het boek ligt licht schuin, met een zachte, bijna ademende beweging. Het draait een paar graden mee met de muis, of op de telefoon met het kantelen. Nooit druk.
-4. **Openen.** Na een tik draait het boek naar je toe, gaat de kaft open over de rug (ongeveer 1,2 seconde) en zoomt de camera in op de eerste spread.
+4. **Openen.** Na een tik draait het boek naar je toe, gaat de kaft open over de rug (ongeveer 1,2 seconde) en zoomt de camera in op de eerste spread. De knuffels schuiven mee naar de rand van het beeld en blijven zichtbaar.
 5. **Inhoudsopgave.** Links een korte introductie en een knop om het boek te kopen. Rechts de verhaaltjes.
 6. **Verhaal kiezen.** Het boek bladert zichtbaar een paar pagina's door naar het verhaal. Het bladeren duurt nooit langer dan 1,5 seconde, hoe ver het verhaal ook achterin staat. Het verhaal heeft een eigen link.
 7. **Lezen.** Bladeren gaat door een hoek te pakken en te slepen, door te swipen, met pijlen op het scherm of met het toetsenbord. Op een telefoon in portretstand staat de camera op één pagina tegelijk.
@@ -90,7 +94,7 @@ Menu en winkelwagen zijn altijd zichtbaar. Niemand komt vast te zitten in het 3D
 * Eerst het boek los, met Vite en een testpagina. Zo kan het snel en zonder Shopify worden bijgestuurd en met Playwright getest.
 * Daarna het thema, en dan pas samenvoegen.
 
-**Repository:** een nieuwe, privé repository `briesje`, met de mappen `theme/` voor het Shopify thema en `book/` voor de broncode van het 3D boek. Deze repo (`marnik-`) is openbaar en bevat een oud ander project, dus die gebruiken we alleen voor dit plan.
+**Repository:** privé repo `briesje`. In de hoofdmap staan dit plan, `CLAUDE.md` en `bestanden/`. Later komen daar `theme/` voor het Shopify thema en `book/` voor de broncode van het 3D boek bij.
 
 ## Fasering
 
@@ -98,7 +102,7 @@ Elke fase eindigt met jouw akkoord.
 
 | Fase | Wat | Resultaat |
 |---|---|---|
-| 0. Voorbereiding | Bestanden uploaden, beeldkeuze maken, Shopify winkel aanmaken, privé repo | Alles klaar om te beginnen |
+| 0. Voorbereiding | Privé repo, bestanden uploaden, kaftbestand en knuffelfoto's regelen, Shopify winkel aanmaken | Alles klaar om te beginnen |
 | 1. Analyse | Oude site en bestanden doorlopen | `INHOUD.md` (alle inhoud met bron) en `ANALYSE-OUDE-SITE.md` (wat bewaren we, wat was er fout) |
 | 2. Stijlrichting | Drie korte stijlvoorstellen voor boek en homepage: letter, kleur, materiaal | Jij kiest er één |
 | 3. Prototype boek | Het 3D boek los, met placeholders: binnenkomst, openen, inhoudsopgave, bladeren, mobiel | Een link die je op je eigen telefoon test. Pas verder als het goed voelt. |
@@ -110,26 +114,27 @@ Fase 3 komt bewust vroeg. Het boek is het spannendste en risicovolste deel. Voel
 
 ## Wat ik van jou nodig heb
 
-1. **Bestanden uploaden.** De oude site (code of screenshots van elke pagina), alle verhalen, productinformatie (namen, prijzen, foto's) en, als die er zijn, logo en huisstijl en een tekst over jullie. Waar je ze neerzet staat in `bestanden/README.md`.
-2. **Beeldkeuze.** A, B of C hierboven. En: bestaan de knuffels al, echt of als ontwerp?
-3. **Shopify.** Een winkel aanmaken (proefperiode is genoeg) en de Shopify-koppeling in claude.ai opnieuw verbinden. Die vraagt nu om opnieuw inloggen, en zonder die koppeling kan ik niet in je winkel.
-4. **Privé repository.** Mag ik een privé repo `briesje` aanmaken, of doe je dat liever zelf?
+1. **Privé repository.** Maak op github.com een lege, privé repo `briesje` aan en geef de Claude GitHub App toegang. De stappen staan in `README.md`.
+2. **Bestanden uploaden.** De oude site (code of screenshots van elke pagina), alle verhalen, productinformatie (namen, prijzen, foto's) en, als die er zijn, logo en huisstijl en een tekst over jullie. Waar je ze neerzet staat in `bestanden/README.md`.
+3. **Kaft en foto's.** Het drukbestand of een scan van de kaft, en vrijstaande foto's van de knuffels. Zie "Beeld" hierboven.
+4. **Shopify.** Een winkel aanmaken (proefperiode is genoeg) en de Shopify-koppeling in claude.ai verbinden.
 5. **Domeinnaam.** Hebben jullie er al een?
 6. **Bedrijfsgegevens.** KvK, btw-nummer en retouradres, voor de verplichte pagina's.
 
 ## Risico's
 
-* **Beeld.** Zonder goede tekeningen of foto's gaat de site alsnog "AI" ogen, hoe goed het boek ook beweegt. Dit is het grootste risico.
+* **Beeldkwaliteit.** De producten bestaan, maar slechte foto's of een onscherpe kaft doen alsnog de hele site teniet. Liever een halve dag fotograferen dan een week bouwen op slecht materiaal.
 * **Oudere telefoons.** 3D kan daar haperen. Oplossing: stilstaand beeld eerst, een lichtere versie op zwakke toestellen, en testen op een goedkope Android.
 * **Lezen op de telefoon.** Tekst in 3D is op een klein scherm minder scherp dan gewone tekst. Daarom één pagina tegelijk, de tekst groot genoeg gezet, en de leesmodus als uitweg.
 * **Knuffels voor kinderen.** Speelgoed dat je in de EU verkoopt moet een CE-markering hebben en getest zijn volgens de speelgoednormen (EN 71). Vraag de leverancier om de testrapporten voordat je gaat verkopen.
 * **Scope.** Een 3D boek en een webshop zijn eigenlijk twee projecten. Daarom de fasering, en niet alles tegelijk.
-* **Openbare repo.** Zet geen wachtwoorden, API-sleutels of `.env`-bestanden uit de oude site in deze repo.
+* **Sleutels in de repo.** Zet ook in een privé repo geen wachtwoorden, API-sleutels of `.env`-bestanden uit de oude site.
 
 ## Open vragen
 
-* Beeldkeuze A, B of C, en bestaan de knuffels al?
+* Is er een drukbestand of scan van de kaft?
+* Zijn er vrijstaande foto's van de knuffels?
+* Staan er tekeningen in het boek, of alleen tekst?
 * Welke accessoires precies?
-* Is het boek al gedrukt, of wordt dat nog gemaakt? Dat bepaalt of de kaft op de site een echt ontwerp moet volgen.
 * Voor welke leeftijd zijn de verhalen?
 * Wie zitten er achter Briesje, en wat mag daarover op de site?
