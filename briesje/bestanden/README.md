@@ -16,7 +16,7 @@ Een los bestand mag maximaal 25 MB zijn. Grotere bestanden, zoals een drukbestan
 
 1. **De oude site.** De code, of screenshots van elke pagina op desktop en mobiel. Een lijstje met wat je er slecht aan vond is heel nuttig.
 2. **Verhalen.** De volledige tekst per verhaal, in welk formaat dan ook. Graag met de volgorde.
-3. **Het boek.** Het drukbestand (pdf) van kaft en binnenwerk. Is dat er niet, dan een scan van de kaft, rug en achterkant.
+3. **Het boek.** Het drukbestand (pdf) van kaft en binnenwerk. Is dat er niet, dan een scan van de kaft, rug en achterkant, en de originele tekeningen als losse bestanden op hoge resolutie. Schrijf erbij wie de tekeningen gemaakt heeft.
 4. **Knuffels.** Vrijstaande foto's (zonder achtergrond), vanuit een paar hoeken. Plus naam, prijs en beschrijving, de gegevens van de leverancier en de CE- en veiligheidsdocumenten.
 5. **Accessoires.** Per product de naam, prijs, beschrijving en foto's.
 6. **Huisstijl.** Logo, kleuren en lettertypen, als die er zijn.

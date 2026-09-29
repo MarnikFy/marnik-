@@ -13,7 +13,7 @@ Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "
 | Doel | Verkopen: het boek, knuffels en accessoires |
 | Webshop | Shopify, nieuwe winkel |
 | Producten | Bestaan al: het boek, de knuffels en de accessoires |
-| Verhalen | Bestaan alleen als tekst |
+| Verhalen | Tekst met een paar tekeningen per verhaal, in het gedrukte boek |
 | Oude site en bestanden | Staan lokaal, moeten nog geüpload worden |
 | Repository | Privé repo `briesje`, los van andere projecten |
 
@@ -41,7 +41,9 @@ Alle producten bestaan al. Dat lost het grootste risico op, want we hoeven geen 
 Waar het nog van afhangt:
 1. **Hebben we een drukbestand of scan van de kaft?** Zonder die krijgt het 3D boek geen echte kaft. Een foto met de telefoon is te weinig: dan zie je glans en vertekening.
 2. **Zijn er goede vrijstaande foto's van de knuffels?** Anders moeten die gemaakt worden. Dat kan met een lichtbak of een wit laken bij daglicht, maar een productfotograaf is een halve dag werk en het verschil zie je.
-3. **Staan er tekeningen in het boek, of alleen tekst?** Bij alleen tekst zetten we de bladzijden net zo mooi als het gedrukte boek. Een knuffel verschijnt dan naast de pagina en niet erin, zodat het 3D boek hetzelfde blijft als het product.
+3. **Tekeningen in het boek.** Bevestigd: er staan tekeningen in. De bladzijden in het 3D boek worden dus opgebouwd uit dezelfde tekst en tekeningen als in het gedrukte boek. Nodig zijn de originele tekeningen op hoge resolutie, of het drukbestand. Foto's of scans van gedrukte pagina's zijn te zacht en vertekend om als bladzijde te dienen.
+
+De tekeningen bepalen ook de sfeer van de site: kleuren en lettertype leiden we af uit de tekeningen en de kaft, we verzinnen ze niet los daarvan.
 
 Het boek zelf (vorm, beweging, bladeren) staat los van het beeld en kan dus al gebouwd worden.
 
@@ -79,7 +81,8 @@ Menu en winkelwagen zijn altijd zichtbaar. Niemand komt vast te zitten in het 3D
 **Het 3D boek: Three.js met GSAP**, als één los script dat alleen laadt op de homepage en de verhaalpagina's.
 * Kaft en rug als echt 3D-object, met stof- of linnentextuur en een reliëftitel
 * Bladzijden die buigen via een SkinnedMesh met botten
-* Paginabeeld wordt in de browser op canvas getekend: tekst gezet in het gekozen lettertype, plus illustratie, op hoge resolutie. Tekst die in Shopify wordt aangepast, staat dus meteen goed in het boek.
+* Bladzijden komen bij voorkeur rechtstreeks uit het drukbestand, als afbeelding per pagina (maximaal 2048 pixels breed). Dan is de bladzijde in het 3D boek identiek aan die in het gedrukte boek. Is er geen drukbestand, dan zetten we tekst en losse tekeningen zelf op een canvas, met het lettertype van het boek.
+* De verhaaltekst staat daarnaast altijd als gewone HTML, onzichtbaar voor het oog maar leesbaar voor Google en schermlezers.
 * Warm licht, zachte schaduw, een subtiele papiertextuur
 
 **Snelheid:**
@@ -104,7 +107,7 @@ Elke fase eindigt met jouw akkoord.
 |---|---|---|
 | 0. Voorbereiding | Privé repo, bestanden uploaden, kaftbestand en knuffelfoto's regelen, Shopify winkel aanmaken | Alles klaar om te beginnen |
 | 1. Analyse | Oude site en bestanden doorlopen | `INHOUD.md` (alle inhoud met bron) en `ANALYSE-OUDE-SITE.md` (wat bewaren we, wat was er fout) |
-| 2. Stijlrichting | Drie korte stijlvoorstellen voor boek en homepage: letter, kleur, materiaal | Jij kiest er één |
+| 2. Stijlrichting | Drie korte stijlvoorstellen voor boek en homepage: letter, kleur, materiaal, afgeleid van de tekeningen en de kaft. Inclusief de test met knuffelfoto's naast een getekende pagina. | Jij kiest er één |
 | 3. Prototype boek | Het 3D boek los, met placeholders: binnenkomst, openen, inhoudsopgave, bladeren, mobiel | Een link die je op je eigen telefoon test. Pas verder als het goed voelt. |
 | 4. Shopify thema | Shop, productpagina's, winkelwagen, informatie- en juridische pagina's | Werkende winkel met testproducten |
 | 5. Samenvoegen | Boek in het thema, verhalen uit metaobjecten, knoppen naar producten | Complete site op een testomgeving |
@@ -128,13 +131,16 @@ Fase 3 komt bewust vroeg. Het boek is het spannendste en risicovolste deel. Voel
 * **Lezen op de telefoon.** Tekst in 3D is op een klein scherm minder scherp dan gewone tekst. Daarom één pagina tegelijk, de tekst groot genoeg gezet, en de leesmodus als uitweg.
 * **Knuffels voor kinderen.** Speelgoed dat je in de EU verkoopt moet een CE-markering hebben en getest zijn volgens de speelgoednormen (EN 71). Vraag de leverancier om de testrapporten voordat je gaat verkopen.
 * **Scope.** Een 3D boek en een webshop zijn eigenlijk twee projecten. Daarom de fasering, en niet alles tegelijk.
+* **Rechten op de tekeningen.** Heeft iemand anders de tekeningen gemaakt, dan moet er afgesproken zijn dat ze ook op de site en op producten mogen. Dat is niet vanzelfsprekend: een illustrator kan een boek-licentie hebben gegeven zonder toestemming voor web of merchandise. Vraag dit na voordat we bouwen.
+* **Foto's naast tekeningen.** Echte foto's van knuffels tussen getekende bladzijden kan mooi zijn, maar ook botsen. In fase 2 testen we dat met een paar echte foto's naast een getekende pagina, voordat we het zo vastleggen.
 * **Sleutels in de repo.** Zet ook in een privé repo geen wachtwoorden, API-sleutels of `.env`-bestanden uit de oude site.
 
 ## Open vragen
 
 * Is er een drukbestand of scan van de kaft?
 * Zijn er vrijstaande foto's van de knuffels?
-* Staan er tekeningen in het boek, of alleen tekst?
+* Wie heeft de tekeningen gemaakt, en zijn ze ook voor web en producten vrij te gebruiken?
+* Zijn de originele tekeningen bewaard op hoge resolutie?
 * Welke accessoires precies?
 * Voor welke leeftijd zijn de verhalen?
 * Wie zitten er achter Briesje, en wat mag daarover op de site?
