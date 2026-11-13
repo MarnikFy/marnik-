@@ -5,6 +5,8 @@ Website en webshop van Briesje, met een 3D boek als hero.
 | Bestand | Waarvoor |
 |---|---|
 | `PLAN.md` | Wat we bouwen, waarom, en in welke fases |
+| `REFERENTIES.md` | Onderzoek naar zes sites die 3D met een verhaal combineren, en welke open broncode bruikbaar is |
+| `STORYBOARD.md` | Wat de bezoeker per moment voelt, doet en ziet, plus het budget |
 | `CLAUDE.md` | Werkregels voor Claude Code, die automatisch gelezen worden |
 | `PROMPT.md` | De zin waarmee je een bouwsessie start |
 | `bestanden/` | Alle bronmateriaal: verhalen, oude site, foto's, productinfo |

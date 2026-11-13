@@ -106,6 +106,7 @@ Elke fase eindigt met jouw akkoord.
 | Fase | Wat | Resultaat |
 |---|---|---|
 | 0. Voorbereiding | Privé repo, bestanden uploaden, kaftbestand en knuffelfoto's regelen, Shopify winkel aanmaken | Alles klaar om te beginnen |
+| 0b. Referenties en storyboard | Zes live sites gemeten, open broncode nagekeken, storyboard en budget geschreven | Klaar: `REFERENTIES.md` en `STORYBOARD.md` |
 | 1. Analyse | Oude site en bestanden doorlopen | `INHOUD.md` (alle inhoud met bron) en `ANALYSE-OUDE-SITE.md` (wat bewaren we, wat was er fout) |
 | 2. Stijlrichting | Drie korte stijlvoorstellen voor boek en homepage: letter, kleur, materiaal, afgeleid van de tekeningen en de kaft. Inclusief de test met knuffelfoto's naast een getekende pagina. | Jij kiest er één |
 | 3. Prototype boek | Het 3D boek los, met placeholders: binnenkomst, openen, inhoudsopgave, bladeren, mobiel | Een link die je op je eigen telefoon test. Pas verder als het goed voelt. |
@@ -137,6 +138,7 @@ Fase 3 komt bewust vroeg. Het boek is het spannendste en risicovolste deel. Voel
 
 ## Open vragen
 
+* Hoeveel mag je gratis lezen op de site? Advies: één of twee hele verhalen. Zie `STORYBOARD.md`.
 * Is er een drukbestand of scan van de kaft?
 * Zijn er vrijstaande foto's van de knuffels?
 * Wie heeft de tekeningen gemaakt, en zijn ze ook voor web en producten vrij te gebruiken?
