@@ -15,6 +15,7 @@ Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "
 | Producten | Bestaan al: het boek, de knuffels en de accessoires |
 | Verhalen | Tekst met een paar tekeningen per verhaal, in het gedrukte boek |
 | Oude site en bestanden | Staan lokaal, moeten nog geüpload worden |
+| Verhalen op de site | Een paar, om aandacht te trekken en het boek te verkopen. Niet het hele boek. |
 | Repository | Privé repo `briesje`, los van andere projecten |
 
 ## Waarom de vorige site "AI" oogde, en wat we anders doen
@@ -138,7 +139,7 @@ Fase 3 komt bewust vroeg. Het boek is het spannendste en risicovolste deel. Voel
 
 ## Open vragen
 
-* Hoeveel mag je gratis lezen op de site? Advies: één of twee hele verhalen. Zie `STORYBOARD.md`.
+* Welke verhalen komen op de site? Besloten is dat het er een paar zijn, niet allemaal.
 * Is er een drukbestand of scan van de kaft?
 * Zijn er vrijstaande foto's van de knuffels?
 * Wie heeft de tekeningen gemaakt, en zijn ze ook voor web en producten vrij te gebruiken?

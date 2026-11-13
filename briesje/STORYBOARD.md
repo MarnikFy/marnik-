@@ -59,16 +59,19 @@ Overschrijdt een onderdeel het budget, dan wordt het onderdeel aangepast en niet
    Oplossing: het budget hierboven, een lichtere versie op zwakke toestellen en de leesmodus als uitweg.
 3. **Het boek vult het hele eerste scherm.** De producten staan dan uit beeld.
    Oplossing: onder het boek is altijd een rand van de shop zichtbaar, zodat je ziet dat er meer is.
-4. **Wie alles gratis kan lezen, koopt het boek niet.** Dit is het zwaarste punt en het is een keuze voor jou, niet voor de bouwer. Zie de open vraag hieronder.
+4. **Wie alles gratis kan lezen, koopt het boek niet.**
+   Oplossing: op de site staan maar een paar verhalen. Zie het besluit hieronder.
 
 Regel voor de hele site: vanaf elk moment sta je in maximaal twee tikken op een productpagina. De tabel hierboven haalt overal één tik.
 
-## Open vraag: hoeveel mag je gratis lezen?
+## Besloten: een paar verhalen, niet het hele boek
 
-| Optie | Voordeel | Nadeel |
-|---|---|---|
-| **A. Eén of twee hele verhalen, de rest alleen titel en eerste bladzijde** | Je proeft het boek echt, en er blijft een reden om te kopen | Je moet kiezen welke verhalen |
-| B. Alle verhalen helemaal | Meeste leesplezier, goed voor vindbaarheid | Weinig reden om het boek nog te kopen |
-| C. Van elk verhaal alleen het begin | Meeste reden om te kopen | Kan flauw voelen: elk verhaal breekt af |
+De site laat een paar verhalen zien om aandacht te trekken. Het doel is het boek verkopen, niet het boek vervangen.
 
-Advies: A. Het boek verkoopt zichzelf als mensen één verhaal echt hebben uitgelezen. In de inhoudsopgave staan dan wel alle titels, zodat je ziet hoeveel er in het boek zit.
+Wat dat betekent voor de site:
+* De inhoudsopgave toont alle titels uit het boek, zodat je ziet hoeveel erin zit.
+* De verhalen die op de site staan, kun je openen en helemaal lezen.
+* De andere titels zijn zichtbaar maar niet te openen. Tik je erop, dan zie je "Dit verhaal staat in het boek" met de knop "Bestel het boek".
+* Op de laatste bladzijde van een verhaal staat hoeveel verhalen er nog in het boek zitten.
+
+Nog te kiezen: welke verhalen het worden. Kies de sterkste, niet de eerste. Eén verhaal dat mensen uitlezen verkoopt meer dan drie waar ze halverwege afhaken.
