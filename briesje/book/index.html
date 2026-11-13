@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Briesje (prototype van het boek)</title>
+    <meta name="description" content="Prototype van het 3D boek van Briesje. Alle inhoud is placeholder." />
+    <meta name="robots" content="noindex" />
+    <link rel="preload" as="image" href="/poster-wide.webp" media="(min-aspect-ratio: 85/100)" />
+    <link rel="preload" as="image" href="/poster-tall.webp" media="(max-aspect-ratio: 85/100)" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#lezen">Naar de verhalen als gewone tekst</a>
+
+    <header class="bar">
+      <a class="mark" href="./">Briesje</a>
+      <nav aria-label="Hoofdmenu">
+        <a href="#winkel">Winkel</a>
+        <a class="btn btn-solid" href="#winkel">Bestel het boek</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="boek" aria-label="Het boek">
+        <picture>
+          <source media="(max-aspect-ratio: 85/100)" srcset="/poster-tall.webp" />
+          <img class="poster" id="poster" src="/poster-wide.webp" alt="Het boek Briesje, dicht, met twee knuffels ernaast" />
+        </picture>
+        <div class="stage" id="stage"></div>
+
+        <button class="hint" id="open" type="button">Tik om het boek te openen</button>
+
+        <nav class="keys" aria-label="Verhalen in het boek" id="keys"></nav>
+
+        <div class="ui" id="ui" hidden>
+          <button class="round prev" id="prev" type="button" aria-label="Vorige bladzijde">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button class="round next" id="next" type="button" aria-label="Volgende bladzijde">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <div class="tools">
+            <button class="btn" id="toc" type="button">Inhoud</button>
+            <button class="btn" id="close" type="button">Boek dicht</button>
+          </div>
+          <div class="end" id="end" hidden>
+            <a class="btn" id="nextStory" href="#"></a>
+            <a class="btn btn-solid" href="#winkel">Bestel het boek</a>
+          </div>
+          <div class="progress" id="progress" role="progressbar" aria-label="Voortgang in dit verhaal" aria-valuemin="0" aria-valuemax="100" hidden><span></span></div>
+        </div>
+
+        <button class="btn mode" id="mode" type="button" aria-pressed="false">Leesmodus</button>
+        <p class="live" id="live" aria-live="polite"></p>
+      </section>
+
+      <section class="reader" id="lezen" aria-label="De verhalen als gewone tekst"></section>
+
+      <section class="shop" id="winkel" aria-labelledby="winkel-kop">
+        <h2 id="winkel-kop">Winkel</h2>
+        <p class="note">Placeholder. Hier komen de echte producten uit Shopify.</p>
+        <ul class="products">
+          <li><div class="ph"></div><strong>Het boek</strong><span>prijs volgt</span></li>
+          <li><div class="ph"></div><strong>Knuffel 1</strong><span>prijs volgt</span></li>
+          <li><div class="ph"></div><strong>Knuffel 2</strong><span>prijs volgt</span></li>
+          <li><div class="ph"></div><strong>Accessoire</strong><span>prijs volgt</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <dialog id="locked" aria-labelledby="locked-kop">
+      <h2 id="locked-kop">Dit verhaal staat in het boek</h2>
+      <p>Op de site staan een paar verhalen. De rest lees je in het boek.</p>
+      <div class="row">
+        <a class="btn btn-solid" href="#winkel" id="lockedBuy">Bestel het boek</a>
+        <button class="btn" type="button" id="lockedClose">Sluiten</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
