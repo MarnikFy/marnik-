@@ -37,3 +37,11 @@ npm run verify     # loopt de hele route en toetst het budget (preview moet draa
 * Het stilstaande beeld is gemaakt op twee schermformaten. Op andere formaten sluit het niet exact aan op het 3D beeld. De overvloeier vangt dat op.
 * Meekantelen met de telefoon zit er nog niet in.
 * Het boek heeft nu 7 vellen. Bij een dikker boek moeten de vellen buiten beeld samengevoegd worden tot een blok.
+
+## Deelbare testpagina
+
+```
+ARTIFACT=1 npm run build && node scripts/artifact.mjs
+```
+
+Dit maakt `dist/artifact.html` met het lettertype in de CSS. Adressen zijn in het prototype `#inhoud` en `#verhaal-1`. In de echte site worden dat gewone adressen per verhaal.

@@ -31,12 +31,12 @@ for (const [name, prof] of Object.entries(profiles)) {
     await page.waitForTimeout(150);
     await shot(`open-${String(t).replace('.', '')}`);
   }
-  await page.goto(base + '#/inhoud', { waitUntil: 'load' });
+  await page.goto(base + '#inhoud', { waitUntil: 'load' });
   await page.reload();
   await page.waitForFunction(() => window.__briesje?.ready, null, { timeout: 60000 });
   await page.waitForTimeout(500);
   await shot('1-inhoud');
-  await page.goto(base + '#/verhaal/verhaal-2', { waitUntil: 'load' });
+  await page.goto(base + '#verhaal-2', { waitUntil: 'load' });
   await page.reload();
   await page.waitForFunction(() => window.__briesje?.ready, null, { timeout: 60000 });
   await page.waitForTimeout(500);

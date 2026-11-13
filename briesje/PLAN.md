@@ -110,7 +110,7 @@ Elke fase eindigt met jouw akkoord.
 | 0b. Referenties en storyboard | Zes live sites gemeten, open broncode nagekeken, storyboard en budget geschreven | Klaar: `REFERENTIES.md` en `STORYBOARD.md` |
 | 1. Analyse | Oude site en bestanden doorlopen | `INHOUD.md` (alle inhoud met bron) en `ANALYSE-OUDE-SITE.md` (wat bewaren we, wat was er fout) |
 | 2. Stijlrichting | Drie korte stijlvoorstellen voor boek en homepage: letter, kleur, materiaal, afgeleid van de tekeningen en de kaft. Inclusief de test met knuffelfoto's naast een getekende pagina. | Jij kiest er één |
-| 3. Prototype boek | Het 3D boek los, met placeholders: binnenkomst, openen, inhoudsopgave, bladeren, mobiel | Een link die je op je eigen telefoon test. Pas verder als het goed voelt. |
+| 3. Prototype boek | Het 3D boek los, met placeholders: binnenkomst, openen, inhoudsopgave, bladeren, mobiel | Eerste versie staat in `book/`. Wacht op jouw test op je eigen telefoon. Pas verder als het goed voelt. |
 | 4. Shopify thema | Shop, productpagina's, winkelwagen, informatie- en juridische pagina's | Werkende winkel met testproducten |
 | 5. Samenvoegen | Boek in het thema, verhalen uit metaobjecten, knoppen naar producten | Complete site op een testomgeving |
 | 6. Test en livegang | Vaste testlijst: iPhone, goedkope Android, desktop, snelheid, een testbestelling, alle teksten nagelopen, domein gekoppeld | Live |

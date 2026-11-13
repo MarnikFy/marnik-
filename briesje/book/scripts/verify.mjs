@@ -63,7 +63,7 @@ for (const [name, prof] of Object.entries(profiles)) {
     await page.mouse.click(box.x + box.width / 2, box.y + box.height * 0.42);
     await at(page, 0);
     check(name, 'tik op het boek opent de inhoudsopgave', true);
-    check(name, 'adres is #/inhoud', (await page.evaluate(() => location.hash)) === '#/inhoud');
+    check(name, 'adres is #inhoud', (await page.evaluate(() => location.hash)) === '#inhoud');
     await page.waitForTimeout(300);
     await shot('2-inhoud');
 
@@ -80,7 +80,7 @@ for (const [name, prof] of Object.entries(profiles)) {
     await page.mouse.click(p.x, p.y);
     await at(page, 3);
     check(name, 'tik op Verhaal 2 bladert naar dat verhaal', true, `${Date.now() - t0} ms in deze testbrowser`);
-    check(name, 'adres is #/verhaal/verhaal-2', (await page.evaluate(() => location.hash)) === '#/verhaal/verhaal-2');
+    check(name, 'adres is #verhaal-2', (await page.evaluate(() => location.hash)) === '#verhaal-2');
     await page.waitForTimeout(300);
     await shot('3-verhaal');
 
@@ -124,10 +124,10 @@ for (const [name, prof] of Object.entries(profiles)) {
     await page.goBack();
     await page.waitForTimeout(700);
     const back = await st(page);
-    check(name, 'terugknop van de browser brengt je terug in het verhaal', back.mode === 'open' && back.spread === 4 && (await page.evaluate(() => location.hash)) === '#/verhaal/verhaal-2');
+    check(name, 'terugknop van de browser brengt je terug in het verhaal', back.mode === 'open' && back.spread === 4 && (await page.evaluate(() => location.hash)) === '#verhaal-2');
 
     // Direct binnenkomen op een verhaal
-    await page.goto(base + '#/verhaal/verhaal-3', { waitUntil: 'load' });
+    await page.goto(base + '#verhaal-3', { waitUntil: 'load' });
     await page.reload();
     await ready(page);
     const direct = await st(page);

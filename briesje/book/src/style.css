@@ -14,6 +14,8 @@
   --paper: #fbf6ea;
   --accent: #b4532a;
   --bar: 56px;
+  --gl: max(16px, env(safe-area-inset-left, 0px));
+  --gr: max(16px, env(safe-area-inset-right, 0px));
   --peek: 68px;
   --serif: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -29,7 +31,7 @@ a { color: inherit; }
 .skip:focus { top: 8px; }
 
 /* Menu: altijd in beeld, met de koopknop */
-.bar { position: fixed; inset: 0 0 auto 0; height: var(--bar); z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(14px, 3vw, 32px); }
+.bar { position: fixed; inset: 0 0 auto 0; height: calc(var(--bar) + env(safe-area-inset-top, 0px)); z-index: 20; display: flex; align-items: center; justify-content: space-between; padding-top: env(safe-area-inset-top, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .mark { font-family: var(--serif); font-weight: 600; font-size: 26px; text-decoration: none; letter-spacing: -0.01em; }
 .bar nav { display: flex; align-items: center; gap: 18px; font-size: 15px; }
 .bar nav a:not(.btn) { text-underline-offset: 4px; }
@@ -58,28 +60,26 @@ a { color: inherit; }
 .round { position: absolute; top: 50%; width: 52px; height: 52px; margin-top: -26px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--bg); cursor: pointer; display: grid; place-items: center; }
 .round svg { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .round:disabled { opacity: 0.28; cursor: default; }
-.round.prev { left: clamp(10px, 2.5vw, 36px); }
-.round.next { right: clamp(10px, 2.5vw, 36px); }
-.tools { position: absolute; left: clamp(14px, 3vw, 32px); bottom: 18px; display: flex; gap: 8px; }
+.round.prev { left: var(--gl); }
+.round.next { right: var(--gr); }
+.tools { position: absolute; left: var(--gl); bottom: 18px; display: flex; gap: 8px; }
 .end { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 8px; }
 .end[hidden] { display: none; }
-.mode { position: absolute; right: clamp(14px, 3vw, 32px); bottom: 18px; }
+.mode { position: absolute; right: var(--gr); bottom: 18px; }
 .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--line); }
 .progress[hidden] { display: none; }
 .progress span { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.3s ease; }
 
 /* Toetsenbord: de verhalen als echte links, zichtbaar zodra je erheen tabt */
-.keys { position: absolute; left: clamp(14px, 3vw, 32px); top: calc(var(--bar) + 8px); display: flex; flex-direction: column; gap: 6px; opacity: 0; pointer-events: none; }
+.keys { position: absolute; left: var(--gl); top: calc(var(--bar) + 8px); display: flex; flex-direction: column; gap: 6px; opacity: 0; pointer-events: none; }
 .keys:focus-within { opacity: 1; pointer-events: auto; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 12px; padding: 12px 14px; z-index: 5; }
 .live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
 @media (max-aspect-ratio: 85/100) {
   .round { top: auto; bottom: 12px; margin: 0; width: 46px; height: 46px; }
-  .round.prev { left: 12px; }
-  .round.next { right: 12px; }
   .tools, .end { left: 50%; bottom: 13px; transform: translateX(-50%); width: max-content; gap: 6px; }
   .hero.at-end .tools { display: none; }
-  .mode { top: calc(var(--bar) + 6px); right: 12px; bottom: auto; min-height: 36px; font-size: 14px; }
+  .mode { top: calc(var(--bar) + 6px); bottom: auto; min-height: 36px; font-size: 14px; }
   .hint { bottom: 14px; white-space: nowrap; }
   .btn { padding: 0 13px; }
   .bar nav a:not(.btn) { display: none; }
@@ -91,16 +91,16 @@ a { color: inherit; }
 
 /* De verhalen als gewone tekst. Altijd aanwezig, zichtbaar in de leesmodus. */
 .reader { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-body.textmode .reader { position: static; width: auto; height: auto; overflow: visible; clip-path: none; max-width: 34rem; margin: 0 auto; padding: calc(var(--bar) + 28px) 20px 40px; }
+body.textmode .reader { position: static; width: auto; height: auto; overflow: visible; clip-path: none; max-width: 34rem; margin: 0 auto; padding-block: calc(var(--bar) + 28px) 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 body.textmode .stage, body.textmode .poster, body.textmode .ui { display: none; }
-body.textmode .hero { height: auto; min-height: 0; padding: calc(var(--bar) + 12px) 20px 0; overflow: visible; }
+body.textmode .hero { height: auto; min-height: 0; padding-block: calc(var(--bar) + 12px) 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); overflow: visible; }
 body.textmode .mode { position: static; }
 .reader article { margin-bottom: 56px; }
 .reader h2 { font: 600 34px/1.15 var(--serif); margin: 0 0 18px; }
 .reader p { font: 400 20px/1.65 var(--serif); margin: 0 0 1em; }
 .reader .more { font: 400 17px/1.5 var(--sans); color: var(--soft); border-top: 1.5px solid var(--line); padding-top: 18px; }
 
-.shop { min-height: 100svh; scroll-margin-top: var(--bar); padding: 20px clamp(14px, 3vw, 32px) 80px; border-top: 1.5px solid var(--line); }
+.shop { min-height: 100svh; scroll-margin-top: var(--bar); padding-block: 20px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); border-top: 1.5px solid var(--line); }
 .shop h2 { font: 600 30px/1.2 var(--serif); margin: 0; height: 48px; display: flex; align-items: center; }
 .note { color: var(--soft); margin: 4px 0 24px; }
 .products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }

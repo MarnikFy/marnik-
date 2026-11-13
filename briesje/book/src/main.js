@@ -24,7 +24,7 @@ $('lezen').innerHTML =
   `<p class="more">In het boek staan nog ${locked.length} verhalen: ${locked.map((l) => l.title).join(', ')}. <a href="${meta.buyUrl}">Bestel het boek</a></p>`;
 
 $('keys').innerHTML =
-  `<a href="#/inhoud">Inhoud</a>` + stories.map((s) => `<a href="#/verhaal/${s.slug}">${s.title}</a>`).join('');
+  `<a href="#inhoud">Inhoud</a>` + stories.map((s) => `<a href="#${s.slug}">${s.title}</a>`).join('');
 
 // ---- Leesmodus ----------------------------------------------------------
 const modeBtn = $('mode');
@@ -47,19 +47,16 @@ function hasWebGL() {
 // ---- Adres --------------------------------------------------------------
 function parseRoute() {
   const h = location.hash;
-  if (h === '#/inhoud') return { kind: 'toc' };
-  const m = h.match(/^#\/verhaal\/([\w-]+)$/);
-  if (m) {
-    const i = stories.findIndex((s) => s.slug === m[1]);
-    if (i >= 0) return { kind: 'story', i };
-  }
+  if (h === '#inhoud') return { kind: 'toc' };
+  const i = stories.findIndex((s) => h === '#' + s.slug);
+  if (i >= 0) return { kind: 'story', i };
   if (h === '' || h === '#' || h === '#boek') return { kind: 'closed' };
   return null; // een gewoon anker, zoals #winkel
 }
 function routeOf(st) {
   if (st.mode === 'closed') return '';
   const i = storyOfSpread(st.spread);
-  return i >= 0 ? `#/verhaal/${stories[i].slug}` : '#/inhoud';
+  return i >= 0 ? `#${stories[i].slug}` : '#inhoud';
 }
 
 let book = null;
@@ -140,7 +137,7 @@ function render(st) {
     nextStory.hidden = false;
     nextStory.innerHTML = `<span class="long">Volgende: ${stories[i + 1].title}</span><span class="short">Volgende</span>`;
     nextStory.setAttribute('aria-label', `Volgende verhaal: ${stories[i + 1].title}`);
-    nextStory.href = `#/verhaal/${stories[i + 1].slug}`;
+    nextStory.href = `#${stories[i + 1].slug}`;
   } else nextStory.hidden = true;
 
   const bar = $('progress');
