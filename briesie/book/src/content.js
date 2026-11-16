@@ -115,9 +115,9 @@ export const storyOfSpread = (s) => (s >= 1 && s <= stories.length ? s - 1 : -1)
 // De producten en prijzen van de oude site. Het cadeaupakket en het losse
 // eikeltje hebben nog geen eigen foto.
 export const products = [
-  { name: 'Eikeltje Siem en het betoverende stofje', tag: 'Het boek', price: 14.95, img: './echt/kaft.webp', text: 'Het kinderboek van Helma Buijs. Gebonden, 91 bladzijden.' },
-  { name: 'Wensbuisje met gevilt figuurtje', tag: 'Handgemaakt', price: 6.95, img: './echt/wensbuisje-1.webp', text: 'Glazen buisje met houten voet, lampjes en een met de hand gevilt figuurtje.' },
+  { name: 'Cadeaupakket: boek en gevilt eikeltje', tag: 'Samen', price: 17.95, duo: ['./echt/kaft.webp', './echt/siem.webp'], big: true, text: 'Het boek samen met een handgemaakt gevilt eikeltje.' },
+  { name: 'Eikeltje Siem en het betoverende stofje', tag: 'Het boek', price: 14.95, img: './echt/kaft.webp', alt: 'De kaft van het boek', url: './boek.html', text: 'Het kinderboek van Helma Buijs. Gebonden, 91 bladzijden.' },
+  { name: 'Wensbuisje met gevilt figuurtje', tag: 'Handgemaakt', price: 6.95, img: './echt/wensbuisje-1.webp', alt: 'Drie wensbuisjes met gevilte figuurtjes', text: 'Glazen buisje met houten voet, lampjes en een met de hand gevilt figuurtje.' },
   { name: 'Gevilt eikeltje', tag: 'Handgemaakt', price: 3.95, img: '', text: 'Met de hand gevilt. Geen twee zijn precies hetzelfde.' },
-  { name: 'Cadeaupakket: boek en gevilt eikeltje', tag: 'Samen', price: 17.95, img: '', text: 'Het boek samen met een handgemaakt gevilt eikeltje.' },
 ];
 export const shipping = { cost: 2.95, freeFrom: 25 };

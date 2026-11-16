@@ -12,6 +12,20 @@ Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "
 * **Helma's verbeterpunten zijn verwerkt**: vrolijker kleuren, geen boom, het eikeltje en het mannetje in beeld. Zie `INHOUD.md`.
 * **Het prototype volgt nu het echte boek** in kaft, kleuren en letter. Zie `book/`.
 
+## Afmaken van de site (vanaf 17 november 2026)
+
+De stappen komen uit `PROMPT-AFMAKEN.md`.
+
+| Stap | Wat | Stand |
+|---|---|---|
+| 1 | Homepage onder het boek en de productpagina van het boek | Klaar, wacht op akkoord |
+| 2 | De andere productpagina's, de winkelwagen en het doorsturen naar de kassa | Nog te doen |
+| 3 | Vaste pagina's en de footer afmaken | Nog te doen, bedrijfsgegevens nodig |
+| 4 | Vindbaarheid: titels, productgegevens, sitemap | Deels gedaan |
+| 5 | Afwerking en controles | Nog te doen |
+
+Keuze die afwijkt van het oude plan: geen volledig Shopify-thema. De site blijft zoals hij is en Shopify doet alleen de kassa. Dit wacht nog op akkoord.
+
 ## Vastgelegde keuzes
 
 | Onderwerp | Keuze |

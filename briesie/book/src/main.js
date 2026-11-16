@@ -25,14 +25,19 @@ $('lezen').querySelectorAll('img').forEach((img) => img.addEventListener('error'
 // ---- De winkel ----------------------------------------------------------
 const euro = (n) => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(n);
 $('producten').innerHTML = products
-  .map(
-    (p) => `<li>${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" />` : '<div class="ph"><span>foto volgt</span></div>'}
-      <small class="kind">${p.tag}</small><strong>${p.name}</strong><small>${p.text}</small><span class="price">${euro(p.price)}</span></li>`,
-  )
+  .map((p) => {
+    const pic = p.duo
+      ? `<div class="duo"><img src="${p.duo[0]}" alt="" loading="lazy" /><img src="${p.duo[1]}" alt="" loading="lazy" /></div>`
+      : p.img
+        ? `<img src="${p.img}" alt="${p.alt || p.name}" loading="lazy" />`
+        : '<div class="ph"><span>foto volgt</span></div>';
+    const body = `${pic}<div class="txt"><small class="kind">${p.tag}</small><strong>${p.name}</strong><small>${p.text}</small><span class="price">${euro(p.price)}</span>${p.url ? '<span class="more">Bekijk</span>' : ''}</div>`;
+    const cls = `card${p.big ? ' big' : ''}`;
+    return `<li>${p.url ? `<a class="${cls}" href="${p.url}">${body}</a>` : `<div class="${cls}">${body}</div>`}</li>`;
+  })
   .join('');
 $('producten').querySelectorAll('img').forEach((img) => img.addEventListener('error', () => img.replaceWith(Object.assign(document.createElement('div'), { className: 'ph' }))));
-$('verzending').textContent = `Verzending binnen Nederland ${euro(shipping.cost)}, gratis vanaf ${euro(shipping.freeFrom)}.`;
-$('mail').textContent = meta.email;
+$('verzending').textContent = `Verzending binnen Nederland ${euro(shipping.cost)}, gratis vanaf ${euro(shipping.freeFrom).replace(',00', '')}.`;
 
 // Ontbreekt een beeld, dan verdwijnt het zonder kapot icoontje.
 for (const id of ['poster']) {
@@ -102,6 +107,8 @@ async function applyRoute() {
     if (r.kind === 'closed') await book.close();
     else {
       setTextMode(false);
+      // Kom je van verderop op de pagina, dan eerst terug naar het boek.
+      if (window.scrollY > 40) window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
       if (st.mode === 'closed') await book.open();
       const target = r.kind === 'toc' ? 0 : storyStartSpread(r.i);
       // Sta je al in dit verhaal, dan blijf je op je bladzijde.

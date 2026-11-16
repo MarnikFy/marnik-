@@ -50,7 +50,7 @@ for (const [name, prof] of Object.entries(profiles)) {
     check(name, 'alles voor de eerste tik maximaal 1,5 MB', bytes <= 1.5 * 1048576, `${(bytes / 1048576).toFixed(2)} MB`);
     const html = await page.evaluate(() => ({
       text: document.getElementById('lezen').innerText.length,
-      buy: !!document.querySelector('.bar a[href="#winkel"].btn'),
+      buy: !!document.querySelector('.bar a.btn-solid[href$="boek.html"]'),
       poster: document.getElementById('poster').naturalWidth,
     }));
     check(name, 'verhaaltekst staat als gewone tekst in de pagina', html.text > 300, `${html.text} tekens`);
@@ -104,19 +104,21 @@ for (const [name, prof] of Object.entries(profiles)) {
 
     // Einde van een verhaal
     await page.waitForTimeout(200);
-    const end = await page.evaluate(() => ({ shown: !document.getElementById('end').hidden, next: document.getElementById('nextStory').hidden ? '' : document.getElementById('nextStory').getAttribute('aria-label'), buy: !!document.querySelector('#end a[href="#winkel"]') }));
+    const end = await page.evaluate(() => ({ shown: !document.getElementById('end').hidden, next: document.getElementById('nextStory').hidden ? '' : document.getElementById('nextStory').getAttribute('aria-label'), buy: !!document.querySelector('#end a.btn-solid[href$="boek.html"]') }));
     check(name, 'einde verhaal toont de koopknop', end.shown && end.buy, end.next || 'laatste verhaal');
     await shot('5-einde-verhaal');
     const here = await st(page);
     const hereHash = await page.evaluate(() => location.hash);
 
     // Kopen: één tik naar de winkel, en terug
-    await page.click('.bar a.btn');
-    await page.waitForTimeout(900);
-    const shop = await page.evaluate(() => ({ hash: location.hash, top: document.getElementById('winkel').getBoundingClientRect().top }));
-    check(name, 'vanuit het verhaal in één tik bij de winkel', shop.hash === '#winkel' && shop.top < 200, `winkel op ${Math.round(shop.top)} px`);
+    await page.click('.bar a.btn-solid');
+    await page.waitForURL(/boek\.html/, { timeout: 15000 });
+    const shop = await page.evaluate(() => ({ h1: document.querySelector('h1')?.innerText || '', price: document.querySelector('.pp-info .price')?.innerText || '' }));
+    check(name, 'vanuit het verhaal in één tik op de productpagina van het boek', /Eikeltje Siem/.test(shop.h1) && /14,95/.test(shop.price), shop.price);
+    await shot('5b-productpagina');
     await page.goBack();
-    await page.waitForTimeout(700);
+    await ready(page);
+    await page.waitForTimeout(500);
     const back = await st(page);
     check(name, 'terugknop van de browser brengt je terug in het verhaal', back.mode === 'open' && back.spread === here.spread && (await page.evaluate(() => location.hash)) === hereHash);
 

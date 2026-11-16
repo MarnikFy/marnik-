@@ -23,6 +23,9 @@ npm run verify     # loopt de hele route en toetst het budget (preview moet draa
 | `src/pages.js` | Zet de kaftfoto op de kaft en tekent de placeholder-bladzijden. Vervalt grotendeels zodra de bladzijden uit het drukbestand komen. |
 | `scripts/assets.mjs` | Maakt lichte webversies van de echte beelden |
 | `src/book3d.js` | Het boek: kaft met twee scharnieren, buigende bladzijden, camera en bewegingen |
+| `index.html` en `boek.html` | De homepage en de productpagina van het boek |
+| `src/partials/` | De kop en de voet, die in elke pagina terugkomen |
+| `src/site.css` | De vormgeving van alles onder het boek, de productpagina en de voet |
 | `src/main.js` | Besturing: tikken, slepen, toetsenbord, adresbalk, leesmodus |
 | `scripts/verify.mjs` | De automatische controle |
 
