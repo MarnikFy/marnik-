@@ -12,6 +12,7 @@ Website en webshop van Briesie, met een 3D boek als hero.
 | `STORYBOARD.md` | Wat de bezoeker per moment voelt, doet en ziet, plus het budget |
 | `CLAUDE.md` | Werkregels voor Claude Code, die automatisch gelezen worden |
 | `PROMPT.md` | De zin waarmee je een bouwsessie start |
+| `PROMPT-AFMAKEN.md` | De prompt om de hele site af te maken, van homepage tot kassa en footer |
 | `bestanden/` | Alle bronmateriaal: verhalen, oude site, foto's, productinfo |
 | `book/` | Het prototype van het 3D boek |
 | `bestanden-lokaal/` | De echte beelden. Staat niet in git, omdat deze repo openbaar is. |
