@@ -1,24 +1,29 @@
 @font-face {
-  font-family: "Fraunces Variable";
-  src: url("../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2") format("woff2-variations");
-  font-weight: 100 900;
+  font-family: "Nunito Variable";
+  src: url("../node_modules/@fontsource-variable/nunito/files/nunito-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 200 1000;
   font-style: normal;
   font-display: swap;
 }
 
+/* Kleuren en letter komen van de kaft van het boek: wit papier met een groene
+   rug, een roze titel en frisgroene tekst. De pagina zelf is lichtgroen, zodat
+   het witte boek erop afsteekt. */
 :root {
-  --bg: #f3ebdc;
-  --ink: #2b2622;
-  --soft: #6f6558;
-  --line: #d9cdb8;
-  --paper: #fbf6ea;
-  --accent: #b4532a;
+  --bg: #e7f0db;
+  --ink: #17362b;
+  --soft: #4a6156;
+  --line: #bfd2ad;
+  --paper: #fdfcf7;
+  --accent: #c2327a;
+  --accent-deep: #a3255f;
+  --green: #0b6b46;
   --bar: 56px;
-  --gl: max(16px, env(safe-area-inset-left, 0px));
-  --gr: max(16px, env(safe-area-inset-right, 0px));
+  --gl: max(16px, 2.6vw, env(safe-area-inset-left, 0px));
+  --gr: max(16px, 2.6vw, env(safe-area-inset-right, 0px));
   --peek: 68px;
-  --serif: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: "Nunito Variable", "Nunito", system-ui, sans-serif;
+  --sans: "Nunito Variable", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -31,15 +36,15 @@ a { color: inherit; }
 .skip:focus { top: 8px; }
 
 /* Menu: altijd in beeld, met de koopknop */
-.bar { position: fixed; inset: 0 0 auto 0; height: calc(var(--bar) + env(safe-area-inset-top, 0px)); z-index: 20; display: flex; align-items: center; justify-content: space-between; padding-top: env(safe-area-inset-top, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.mark { font-family: var(--serif); font-weight: 600; font-size: 26px; text-decoration: none; letter-spacing: -0.01em; }
+.bar { position: fixed; inset: 0 0 auto 0; height: calc(var(--bar) + env(safe-area-inset-top, 0px)); z-index: 20; display: flex; align-items: center; justify-content: space-between; padding-top: env(safe-area-inset-top, 0px); padding-left: var(--gl); padding-right: var(--gr); }
+.mark { font-family: var(--serif); font-weight: 900; font-size: 26px; text-decoration: none; letter-spacing: -0.01em; color: var(--green); }
 .bar nav { display: flex; align-items: center; gap: 18px; font-size: 15px; }
-.bar nav a:not(.btn) { text-underline-offset: 4px; }
+.bar nav a:not(.btn) { text-underline-offset: 4px; font-weight: 700; }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--bg); color: var(--ink); font: 500 15px/1 var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--bg); color: var(--ink); font: 700 15px/1 var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap; }
 .btn:hover { background: var(--paper); }
-.btn-solid { background: var(--ink); color: var(--paper); }
-.btn-solid:hover { background: #46403a; }
+.btn-solid { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-solid:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
 .bar .btn { min-height: 38px; }
 
 /* Hero: het boek. Onderaan blijft een rand van de winkel zichtbaar. */
@@ -53,7 +58,7 @@ a { color: inherit; }
 .book-canvas { display: block; width: 100%; height: 100%; }
 .hero.is-open .stage { cursor: grab; }
 
-.hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); border: 0; background: none; color: var(--ink); font: 500 17px/1.2 var(--serif); padding: 12px 16px; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); border: 0; background: none; color: var(--ink); font: 800 18px/1.2 var(--serif); padding: 12px 16px; cursor: pointer; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .hero.is-open .hint, .hero.is-busy .hint, body.textmode .hint { display: none; }
 
 .ui[hidden] { display: none; }
@@ -70,6 +75,15 @@ a { color: inherit; }
 .progress[hidden] { display: none; }
 .progress span { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.3s ease; }
 
+/* Titel van het boek: staat er zolang het boek dicht is */
+.title { position: absolute; left: var(--gl); top: calc(var(--bar) + 26px); margin: 0; max-width: min(27rem, 34vw); pointer-events: none; transition: opacity 0.3s ease; }
+.title h1 { margin: 0; font: 900 clamp(30px, 3.4vw, 50px)/1.02 var(--serif); letter-spacing: -0.02em; color: var(--accent); text-wrap: balance; }
+.title h1 span { display: block; font-weight: 700; font-size: 0.5em; line-height: 1.25; letter-spacing: 0; margin-top: 0.3em; }
+.title p { margin: 14px 0 0; font: 600 16px/1.45 var(--sans); color: var(--ink); }
+.title em { display: block; font-style: italic; color: var(--green); font-weight: 700; }
+.hero.is-open .title, .hero.is-busy .title { opacity: 0; }
+body.textmode .title { position: static; max-width: 34rem; margin: 0 auto 8px; }
+
 /* Toetsenbord: de verhalen als echte links, zichtbaar zodra je erheen tabt */
 .keys { position: absolute; left: var(--gl); top: calc(var(--bar) + 8px); display: flex; flex-direction: column; gap: 6px; opacity: 0; pointer-events: none; }
 .keys:focus-within { opacity: 1; pointer-events: auto; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 12px; padding: 12px 14px; z-index: 5; }
@@ -81,6 +95,10 @@ a { color: inherit; }
   .hero.at-end .tools { display: none; }
   .mode { top: calc(var(--bar) + 6px); bottom: auto; min-height: 36px; font-size: 14px; }
   .hint { bottom: 14px; white-space: nowrap; }
+  .title { top: calc(var(--bar) + 2px); max-width: calc(100% - 150px); }
+  .title h1 { font-size: 24px; }
+  .title p { font-size: 13.5px; margin-top: 5px; max-width: 13.5rem; }
+  .title em { display: none; }
   .btn { padding: 0 13px; }
   .bar nav a:not(.btn) { display: none; }
   .long { display: none; }
@@ -91,30 +109,32 @@ a { color: inherit; }
 
 /* De verhalen als gewone tekst. Altijd aanwezig, zichtbaar in de leesmodus. */
 .reader { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-body.textmode .reader { position: static; width: auto; height: auto; overflow: visible; clip-path: none; max-width: 34rem; margin: 0 auto; padding-block: calc(var(--bar) + 28px) 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+body.textmode .reader { position: static; width: auto; height: auto; overflow: visible; clip-path: none; max-width: 34rem; margin: 0 auto; padding-block: calc(var(--bar) + 28px) 40px; padding-left: var(--gl); padding-right: var(--gr); }
 body.textmode .stage, body.textmode .poster, body.textmode .ui { display: none; }
-body.textmode .hero { height: auto; min-height: 0; padding-block: calc(var(--bar) + 12px) 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); overflow: visible; }
+body.textmode .hero { height: auto; min-height: 0; padding-block: calc(var(--bar) + 12px) 0; padding-left: var(--gl); padding-right: var(--gr); overflow: visible; }
 body.textmode .mode { position: static; }
 .reader article { margin-bottom: 56px; }
-.reader h2 { font: 600 34px/1.15 var(--serif); margin: 0 0 18px; }
-.reader p { font: 400 20px/1.65 var(--serif); margin: 0 0 1em; }
+.reader h2 { font: 800 34px/1.15 var(--serif); margin: 0 0 18px; color: var(--accent); }
+.reader p { font: 500 20px/1.65 var(--serif); margin: 0 0 1em; }
 .reader .more { font: 400 17px/1.5 var(--sans); color: var(--soft); border-top: 1.5px solid var(--line); padding-top: 18px; }
 
-.shop { min-height: 100svh; scroll-margin-top: var(--bar); padding-block: 20px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); border-top: 1.5px solid var(--line); }
-.shop h2 { font: 600 30px/1.2 var(--serif); margin: 0; height: 48px; display: flex; align-items: center; }
+.shop { min-height: 100svh; scroll-margin-top: var(--bar); padding-block: 20px 80px; padding-left: var(--gl); padding-right: var(--gr); border-top: 1.5px solid var(--line); }
+.shop h2 { font: 900 30px/1.2 var(--serif); color: var(--green); margin: 0; height: 48px; display: flex; align-items: center; }
 .note { color: var(--soft); margin: 4px 0 24px; }
 .products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }
 .products li { display: flex; flex-direction: column; gap: 4px; }
 .products .ph { aspect-ratio: 4 / 5; border: 1.5px dashed var(--line); border-radius: 10px; margin-bottom: 8px; }
+.products img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: contain; background: var(--paper); border-radius: 10px; margin-bottom: 8px; padding: 10px; }
+.products small { color: var(--soft); font-size: 14px; line-height: 1.35; }
 .products span { color: var(--soft); font-size: 15px; }
 
 dialog { border: 1.5px solid var(--ink); border-radius: 16px; background: var(--paper); color: var(--ink); padding: 26px; max-width: min(92vw, 26rem); }
-dialog::backdrop { background: rgba(43, 38, 34, 0.45); }
-dialog h2 { font: 600 26px/1.2 var(--serif); margin: 0 0 10px; }
+dialog::backdrop { background: rgba(23, 54, 43, 0.45); }
+dialog h2 { font: 800 26px/1.2 var(--serif); margin: 0 0 10px; color: var(--accent); }
 dialog p { margin: 0 0 20px; }
 .row { display: flex; gap: 8px; flex-wrap: wrap; }
 
-body.still .bar, body.still .hint, body.still .mode, body.still .ui { display: none; }
+body.still .bar, body.still .hint, body.still .mode, body.still .ui, body.still .title { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

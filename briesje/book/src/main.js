@@ -1,6 +1,6 @@
 // Besturing van de pagina. Het 3D boek wordt pas geladen nadat het
 // stilstaande beeld er staat, zodat het eerste beeld er meteen is.
-import { book as meta, stories, locked, SHEETS, storyStartSpread, storyOfSpread } from './content.js';
+import { book as meta, images, stories, SHEETS, storyStartSpread, storyOfSpread } from './content.js';
 import { tocItems } from './pages.js';
 
 const $ = (id) => document.getElementById(id);
@@ -21,7 +21,15 @@ $('lezen').innerHTML =
         .join('')}</article>`,
     )
     .join('') +
-  `<p class="more">In het boek staan nog ${locked.length} verhalen: ${locked.map((l) => l.title).join(', ')}. <a href="${meta.buyUrl}">Bestel het boek</a></p>`;
+  `<p class="more">Het hele verhaal staat in het boek ${meta.fullTitle} van ${meta.author}. <a href="${meta.buyUrl}">Bestel het boek</a></p>`;
+
+// Ontbreekt een beeld, dan verdwijnt het zonder kapot icoontje.
+for (const id of ['poster', 'shopCover']) {
+  const img = $(id);
+  const gone = () => (id === 'poster' ? img.remove() : img.replaceWith(Object.assign(document.createElement('div'), { className: 'ph' })));
+  if (img.complete && !img.naturalWidth) gone();
+  else img.addEventListener('error', gone);
+}
 
 $('keys').innerHTML =
   `<a href="#inhoud">Inhoud</a>` + stories.map((s) => `<a href="#${s.slug}">${s.title}</a>`).join('');
@@ -204,10 +212,8 @@ function bindPointer() {
 function tap(x, y) {
   const st = book.state();
   if (st.mode === 'busy') return;
-  if (book.plushHit(x, y) >= 0) {
-    location.hash = '#winkel';
-    return;
-  }
+  const figure = book.plushHit(x, y);
+  if (figure >= 0) return book.hop(figure);
   if (st.mode === 'closed') return book.open();
   const hit = book.pageHit(x, y);
   if (!hit) return;
@@ -251,9 +257,13 @@ async function start() {
     return;
   }
   // Het lettertype moet er zijn voordat de bladzijden getekend worden.
-  await Promise.all([document.fonts.load('600 40px "Fraunces Variable"'), document.fonts.load('400 40px "Fraunces Variable"')]).catch(() => {});
-  const { createBook } = await import('./book3d.js');
-  book = createBook(stage, { reduced });
+  const font = Promise.all([document.fonts.load('800 40px "Nunito Variable"'), document.fonts.load('500 40px "Nunito Variable"')]).catch(() => {});
+  // De echte beelden. Ontbreekt er een, dan tekent het boek een placeholder.
+  const load = (src) => new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; });
+  const names = Object.keys(images);
+  const [loaded, { createBook }] = await Promise.all([Promise.all(names.map((n) => load(images[n]))), import('./book3d.js'), font]);
+  const imgs = Object.fromEntries(names.map((n, i) => [n, loaded[i]]));
+  book = createBook(stage, { reduced, imgs });
   book.on('change', render);
   bindPointer();
   bindKeys();

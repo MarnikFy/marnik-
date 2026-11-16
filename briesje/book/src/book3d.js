@@ -31,7 +31,7 @@ function tex(canvas, renderer) {
   return t;
 }
 
-export function createBook(container, { reduced = false } = {}) {
+export function createBook(container, { reduced = false, imgs = {} } = {}) {
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.shadowMap.enabled = true;
@@ -42,7 +42,7 @@ export function createBook(container, { reduced = false } = {}) {
   const scene = new Scene();
   const camera = new PerspectiveCamera(32, 1, 0.1, 50);
 
-  scene.add(new HemisphereLight(0xfff6e8, 0xb9a98f, 1.6));
+  scene.add(new HemisphereLight(0xffffff, 0xc4d4b0, 1.6));
   const sun = new DirectionalLight(0xffffff, 1.9);
   sun.position.set(-2.2, 5, 2.4);
   sun.castShadow = true;
@@ -67,7 +67,8 @@ export function createBook(container, { reduced = false } = {}) {
 
   // ---- Kaft -------------------------------------------------------------
   const linen = (c) => new MeshStandardMaterial({ map: tex(c, renderer), roughness: 0.86 });
-  const edgeMat = new MeshStandardMaterial({ color: draw.colors.cover, roughness: 0.86 });
+  const edgeMat = new MeshStandardMaterial({ color: draw.colors.coverPaper, roughness: 0.86 });
+  const spineMat = new MeshStandardMaterial({ color: draw.colors.spine, roughness: 0.8 });
   const boardGeo = new BoxGeometry(W + OVER, H + 2 * OVER, TC);
   boardGeo.translate((W + OVER) / 2, 0, TC / 2);
 
@@ -87,14 +88,14 @@ export function createBook(container, { reduced = false } = {}) {
   const spineGeo = new BoxGeometry(TC * 0.7, H + 2 * OVER, T + TC);
   spineGeo.translate(-TC * 0.65, 0, (T + TC) / 2);
   const hingeMat = new MeshStandardMaterial({ color: draw.colors.endpaper, roughness: 0.9 });
-  const spine = new Mesh(spineGeo, [hingeMat, edgeMat, edgeMat, edgeMat, edgeMat, edgeMat]);
+  const spine = new Mesh(spineGeo, [hingeMat, spineMat, spineMat, spineMat, spineMat, spineMat]);
   spine.castShadow = true;
   spineG.add(spine);
 
   const coverG = new Group(); // scharnier bij de voorkaft
   coverG.position.set(0, 0, T);
   spineG.add(coverG);
-  const front = new Mesh(boardGeo, [edgeMat, hidden, edgeMat, edgeMat, linen(draw.drawCoverFront()), linen(draw.drawInsideFront())]);
+  const front = new Mesh(boardGeo, [edgeMat, hidden, edgeMat, edgeMat, linen(draw.drawCoverFront(imgs.cover)), linen(draw.drawInsideFront())]);
   front.castShadow = true;
   coverG.add(front);
 
@@ -115,7 +116,7 @@ export function createBook(container, { reduced = false } = {}) {
     sheetGeo.setAttribute('skinIndex', new Uint16BufferAttribute(idx, 4));
     sheetGeo.setAttribute('skinWeight', new Float32BufferAttribute(wts, 4));
   }
-  const paperEdge = new MeshStandardMaterial({ color: 0xefe6d2, roughness: 0.95 });
+  const paperEdge = new MeshStandardMaterial({ color: 0xf1efe4, roughness: 0.95 });
   const blankR = tex(draw.drawBlank('right'), renderer);
   const blankL = tex(draw.drawBlank('left'), renderer);
 
@@ -168,27 +169,53 @@ export function createBook(container, { reduced = false } = {}) {
     invalidate();
   }
 
-  // ---- Knuffels (placeholder) -------------------------------------------
+  // ---- Figuurtjes naast het boek ----------------------------------------
+  // De echte tekeningen als die er zijn, anders een placeholder.
   const plush = [];
+  const blobTex = tex(draw.drawBlob(), renderer);
   [
-    { label: 'Knuffel 1', tint: '#e2b07a', x: -0.92, z: -0.3, s: 1 },
-    { label: 'Knuffel 2', tint: '#c9b3d6', x: 0.9, z: 0.28, s: 0.86 },
+    { img: imgs.green, label: 'Figuurtje', tint: '#9cc46a', w: 0.66, wide: [-1.04, -0.02], tall: [-0.36, 1.04] },
+    { img: imgs.siem, label: 'Siem', tint: '#e2b07a', w: 0.46, wide: [1.0, 0.3], tall: [0.46, 1.08] },
   ].forEach((d, i) => {
-    const m = new Mesh(
-      new PlaneGeometry(0.42 * d.s, 0.56 * d.s),
-      new MeshBasicMaterial({ map: tex(draw.drawPlush(d.label, d.tint), renderer), transparent: true }),
-    );
-    m.position.set(d.x, 0.28 * d.s, d.z);
+    const src = d.img || draw.drawFigure(d.label, d.tint);
+    const h = d.w * ((src.naturalHeight || src.height) / (src.naturalWidth || src.width));
+    const m = new Mesh(new PlaneGeometry(d.w, h), new MeshBasicMaterial({ map: tex(src, renderer), transparent: true, depthWrite: false }));
     m.rotation.x = -0.32;
-    m.userData = { home: d.x, wide: [d.x, d.z], tall: [i ? 0.42 : -0.4, i ? 1.06 : 1.0], index: i };
-    scene.add(m);
+    m.renderOrder = 2;
+    const blob = new Mesh(new PlaneGeometry(d.w * 0.9, d.w * 0.34), new MeshBasicMaterial({ map: blobTex, transparent: true, depthWrite: false }));
+    blob.rotation.x = -Math.PI / 2;
+    blob.renderOrder = 1;
+    m.userData = { home: d.wide[0], wide: d.wide, tall: d.tall, index: i, baseY: h / 2 + 0.01, jump: 0, tilt: 0, blob };
+    m.position.set(d.wide[0], m.userData.baseY, d.wide[1]);
+    scene.add(blob, m);
     plush.push(m);
   });
+
+  // ---- Het betoverende stofje -------------------------------------------
+  const dustTex = imgs.dust ? tex(imgs.dust, renderer) : null;
+  const dustMat = () => new MeshBasicMaterial({ map: dustTex, transparent: true, depthWrite: false, depthTest: false, opacity: 0 });
+  const dustGeo = new PlaneGeometry(1, 0.84);
+  // Een handvol glinsteringen die opstuiven en uitwaaieren. Vaste waarden,
+  // zodat de beweging elke keer hetzelfde is.
+  const motes = !dustTex ? [] : [
+    [-0.42, 0.52, -0.3, 0.34, 0.0], [0.3, 0.72, -0.12, 0.44, 0.04], [-0.1, 0.9, 0.18, 0.3, 0.1],
+    [0.52, 0.42, 0.26, 0.24, 0.14], [-0.6, 0.34, 0.12, 0.2, 0.18], [0.1, 0.6, -0.42, 0.26, 0.08],
+    [0.36, 0.3, 0.44, 0.18, 0.22], [-0.28, 0.76, 0.36, 0.22, 0.25],
+  ].map(([dx, dy, dz, size, delay]) => {
+    const m = new Mesh(dustGeo, dustMat());
+    m.userData = { dx, dy, dz, size, delay };
+    m.renderOrder = 5;
+    m.visible = false;
+    scene.add(m);
+    return m;
+  });
+  const twinkle = dustTex ? new Mesh(dustGeo, dustMat()) : null;
+  if (twinkle) { twinkle.renderOrder = 5; scene.add(twinkle); }
 
   // ---- Toestand ---------------------------------------------------------
   const S = {
     yaw: -0.36, hover: HOVER, shift: -W / 2, cover: 0, spine: 0, dip: 0,
-    tx: 0, tz: 0, elev: 0.92, dist: 5, plush: 0, plushA: 1,
+    tx: 0, tz: 0, elev: 0.92, dist: 5, plush: 0, plushA: 1, dust: 0,
   };
   let mode = 'closed'; // closed | busy | open
   let single = false; // telefoon rechtop: één bladzijde tegelijk
@@ -208,6 +235,7 @@ export function createBook(container, { reduced = false } = {}) {
   }
 
   // Zoekt de camera-afstand waarbij alle punten binnen de marge vallen.
+  const up = new Vector3(0, 1, 0);
   const probe = new PerspectiveCamera();
   function fit(points, tx, tz, elev, mx, my) {
     const { w, h } = size();
@@ -238,8 +266,9 @@ export function createBook(container, { reduced = false } = {}) {
     const elev = 0.92;
     const pts = box(-0.72, 0.72, HOVER + 0.1);
     if (single) pts.push(new Vector3(0, 0, 1.2));
-    const tz = single ? 0.2 : 0.04;
-    const d = fit(pts, 0, tz, elev, single ? 0.84 : 0.5, { top: 0.6, bottom: single ? 0.7 : 0.62 });
+    const tz = single ? 0.14 : 0.04;
+    // Op de telefoon blijft boven het boek ruimte voor de titel.
+    const d = fit(pts, 0, tz, elev, single ? 0.84 : 0.46, { top: single ? 0.46 : 0.6, bottom: single ? 0.7 : 0.62 });
     return { tx: 0, tz, elev, dist: d };
   }
   function readPose(sd = side) {
@@ -279,14 +308,39 @@ export function createBook(container, { reduced = false } = {}) {
     }
 
     plush.forEach((m) => {
-      const dir = Math.sign(m.userData.home);
-      m.position.x = m.userData.home + dir * S.plush;
+      const u = m.userData;
+      const dir = Math.sign(u.home);
+      m.position.x = u.home + dir * S.plush;
+      m.position.y = u.baseY + u.jump;
+      m.rotation.z = u.tilt;
       m.material.opacity = S.plushA;
       m.visible = S.plushA > 0.01;
+      u.blob.position.set(m.position.x, 0.004, m.position.z + 0.06);
+      u.blob.material.opacity = S.plushA * (1 - Math.min(0.7, u.jump * 3));
+      u.blob.visible = m.visible;
     });
 
     camera.position.set(S.tx, Math.sin(S.elev) * S.dist, S.tz + Math.cos(S.elev) * S.dist);
     camera.lookAt(S.tx, 0, S.tz);
+    // Het stofje kijkt altijd naar de camera.
+    for (const m of motes) {
+      const u = m.userData;
+      const q = MathUtils.clamp((S.dust * 1.25 - u.delay) / 1, 0, 1);
+      m.visible = q > 0.001 && q < 0.999;
+      if (!m.visible) continue;
+      m.material.opacity = Math.sin(Math.PI * q) * 0.95;
+      m.scale.setScalar(u.size * (0.6 + 0.7 * q));
+      m.position.set(S.shift + 0.45 + u.dx * q, 0.18 + u.dy * q, u.dz * q);
+      m.quaternion.copy(camera.quaternion);
+    }
+    if (twinkle) {
+      const show = mode === 'closed';
+      twinkle.visible = show;
+      twinkle.material.opacity = show ? (reduced ? 0.85 : 0.65 + 0.3 * Math.sin(time * 2.1)) : 0;
+      twinkle.scale.setScalar(0.2 * (reduced ? 1 : 0.9 + 0.16 * Math.sin(time * 2.1 + 1)));
+      twinkle.position.set(0.5, 0, -H * 0.5).applyAxisAngle(up, rig.rotation.y).setY(rig.position.y + 0.1);
+      twinkle.quaternion.copy(camera.quaternion);
+    }
     // Krap dieptebereik rond het boek. Sommige telefoons meten diepte in maar
     // 16 bits, en dan schemert de kaft anders door de bladzijden heen.
     const near = Math.max(0.5, S.dist - 2.6);
@@ -340,13 +394,15 @@ export function createBook(container, { reduced = false } = {}) {
     tl.to(S, { spine: -Math.PI / 2 + 0.05, duration: 0.07, ease: 'sine.out' }, 1.06);
     tl.to(S, { spine: -Math.PI / 2, duration: 0.07, ease: 'sine.in' }, 1.13);
     tl.to(S, { tx: to.tx, tz: to.tz, elev: to.elev, dist: to.dist, duration: 0.9, ease: 'power2.inOut' }, 0.3);
+    // Het betoverende stofje stuift op zodra de kaft loskomt.
+    tl.fromTo(S, { dust: 0 }, { dust: 1, duration: 1.0, ease: 'power1.out' }, 0.28);
     tl.to(S, { plush: 0.9, duration: 0.8, ease: 'power2.in' }, 0.15);
     tl.to(S, { plushA: 0, duration: 0.35, ease: 'none' }, 0.55);
     return tl;
   }
 
   function setOpenInstant(s, sd = 1) {
-    Object.assign(S, { yaw: 0, hover: 0, shift: 0, dip: 0, cover: -Math.PI / 2, spine: -Math.PI / 2, plush: 0.9, plushA: 0 });
+    Object.assign(S, { yaw: 0, hover: 0, shift: 0, dip: 0, cover: -Math.PI / 2, spine: -Math.PI / 2, plush: 0.9, plushA: 0, dust: 0 });
     spread = s;
     side = sd;
     sheets.forEach((sh, k) => (sh.p = k < s ? 1 : 0));
@@ -435,6 +491,17 @@ export function createBook(container, { reduced = false } = {}) {
     if (single && side === 1) return turnTo(spread, 0);
     if (spread <= 0) return;
     return turnTo(spread - 1, 1);
+  }
+
+  // Een figuurtje springt op als je erop tikt.
+  function hop(i) {
+    const u = plush[i]?.userData;
+    if (!u || reduced || gsap.isTweening(u)) return;
+    gsap.timeline({ onUpdate: invalidate })
+      .to(u, { jump: 0.22, duration: 0.22, ease: 'power2.out' })
+      .to(u, { jump: 0, duration: 0.42, ease: 'bounce.out' })
+      .to(u, { tilt: i ? -0.16 : 0.12, duration: 0.16, ease: 'sine.out' }, 0)
+      .to(u, { tilt: 0, duration: 0.4, ease: 'sine.inOut' }, 0.16);
   }
 
   const state = () => ({ mode, spread, side, single, sheets: SHEETS });
@@ -528,14 +595,14 @@ export function createBook(container, { reduced = false } = {}) {
   return {
     el: renderer.domElement,
     on: (n, f) => ((listeners[n] ||= []).push(f)),
-    state, open, close, next, prev, turnTo, setOpenInstant, intro,
+    state, open, close, next, prev, turnTo, setOpenInstant, intro, hop,
     pageHit, plushHit, pagePoint, dragStart, dragMove, dragEnd,
     setPointer: (x, y) => { pointer.x = x; pointer.y = y; },
     // Voor de controle: zet de openingsbeweging stil op tijdstip t.
     seekOpen(t) {
       gsap.globalTimeline.clear();
       mode = 'closed';
-      Object.assign(S, { yaw: -0.36, hover: HOVER, shift: -W / 2, cover: 0, spine: 0, dip: 0, plush: 0, plushA: 1 }, closedPose());
+      Object.assign(S, { yaw: -0.36, hover: HOVER, shift: -W / 2, cover: 0, spine: 0, dip: 0, plush: 0, plushA: 1, dust: 0 }, closedPose());
       sheets.forEach((s) => (s.p = 0));
       mode = 'busy';
       openTimeline().time(t);

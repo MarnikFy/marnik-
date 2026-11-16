@@ -1,18 +1,34 @@
-// PLACEHOLDER-inhoud. Alles hier wordt vervangen door de echte inhoud uit
-// bestanden/ (drukbestand, verhaalteksten, productgegevens). Niets hiervan
-// is echte tekst van Briesje.
+// Wat hier echt is en wat placeholder, staat erbij. De echte gegevens komen
+// uit de bibliotheekcatalogus en van de kaft, zie ../../INHOUD.md.
 
+// ECHT: gegevens van het boek.
 export const book = {
-  title: 'Briesje',
-  // Verhouding van één bladzijde (breedte : hoogte). Volgt later het echte boek.
-  pageRatio: 1.36,
+  brand: 'Briesje',
+  title: 'Eikeltje Siem',
+  subtitle: 'en het betoverende stofje',
+  fullTitle: 'Eikeltje Siem en het betoverende stofje',
+  tagline: 'Zo klein, maar toch zo groot',
+  author: 'Helma Buijs',
+  ages: '6 tot 9 jaar',
+  pages: 91,
+  isbn: '9789464915594',
+  publisher: 'Boekengilde',
+  year: 2024,
+  // Verhouding van één bladzijde (breedte : hoogte), afgeleid van de kaft.
+  pageRatio: 1.42,
   buyUrl: '#winkel',
-  intro: [
-    'Hier komen twee zinnen over wat Briesje is en voor wie het boek bedoeld is.',
-    'Deze tekst is een placeholder en komt uit jouw bestanden.',
-  ],
 };
 
+// ECHT: de beelden. Ze staan in public/echt/ en niet in git. Ontbreken ze,
+// dan tekent de site een placeholder.
+export const images = {
+  cover: './echt/kaft.webp',
+  green: './echt/figuur-groen.webp',
+  siem: './echt/siem.webp',
+  dust: './echt/stofje.webp',
+};
+
+// PLACEHOLDER: de tekst in het boek. De echte verhalen zijn nog niet aangeleverd.
 const para = (n, page) => [
   `Hier komt de tekst van bladzijde ${page} van verhaal ${n}. Deze tekst is een placeholder en wordt vervangen door de echte tekst uit het boek.`,
   'Deze alinea laat zien hoe een bladzijde met tekst eruitziet: de lettergrootte, de regelafstand en de marges rond de tekst.',
@@ -24,7 +40,6 @@ const para = (n, page) => [
 export const stories = [1, 2, 3].map((n) => ({
   slug: `verhaal-${n}`,
   title: `Verhaal ${n}`,
-  plush: `Knuffel ${n}`,
   pages: [1, 2, 3, 4].map((p) => ({ art: p % 2 === 1, text: para(n, p) })),
 }));
 

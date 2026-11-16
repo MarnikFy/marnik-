@@ -2,6 +2,14 @@
 
 Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "Open vragen" staat, is nog niet beslist en wordt niet door de bouwer ingevuld.
 
+## Stand van zaken op 16 november 2026
+
+* **Het boek is gevonden.** Het gaat om *Eikeltje Siem en het betoverende stofje* van Helma Buijs: 91 bladzijden, voor 6 tot 9 jaar, uitgegeven in 2024. Alle gegevens met bron staan in `INHOUD.md`.
+* **Vier beelden zijn gevonden** in de uploads bij Higgsfield: een foto van de kaft, Siem, het groene figuurtje en het stofje. Het prototype gebruikt ze.
+* **De tekst van het boek ontbreekt nog.** De bladzijden in het prototype zijn placeholder.
+* **De naam Briesje is al in gebruik** door een andere organisatie, op briesje.com. Zie `SEO.md` voor het advies.
+* **Het prototype volgt nu het echte boek** in kaft, kleuren en letter. Zie `book/`.
+
 ## Vastgelegde keuzes
 
 | Onderwerp | Keuze |
@@ -108,7 +116,7 @@ Elke fase eindigt met jouw akkoord.
 |---|---|---|
 | 0. Voorbereiding | Privé repo, bestanden uploaden, kaftbestand en knuffelfoto's regelen, Shopify winkel aanmaken | Alles klaar om te beginnen |
 | 0b. Referenties en storyboard | Zes live sites gemeten, open broncode nagekeken, storyboard en budget geschreven | Klaar: `REFERENTIES.md` en `STORYBOARD.md` |
-| 1. Analyse | Oude site en bestanden doorlopen | `INHOUD.md` (alle inhoud met bron) en `ANALYSE-OUDE-SITE.md` (wat bewaren we, wat was er fout) |
+| 1. Analyse | Bronnen doorlopen en vastleggen wat echt is | Deels klaar: `INHOUD.md` en `SEO.md`. De oude site en de tekst van het boek ontbreken nog. |
 | 2. Stijlrichting | Drie korte stijlvoorstellen voor boek en homepage: letter, kleur, materiaal, afgeleid van de tekeningen en de kaft. Inclusief de test met knuffelfoto's naast een getekende pagina. | Jij kiest er één |
 | 3. Prototype boek | Het 3D boek los, met placeholders: binnenkomst, openen, inhoudsopgave, bladeren, mobiel | Eerste versie staat in `book/`. Wacht op jouw test op je eigen telefoon. Pas verder als het goed voelt. |
 | 4. Shopify thema | Shop, productpagina's, winkelwagen, informatie- en juridische pagina's | Werkende winkel met testproducten |

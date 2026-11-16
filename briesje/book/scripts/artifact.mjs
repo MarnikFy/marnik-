@@ -8,9 +8,13 @@ const keep = head
   .split('\n')
   .map((l) => l.trim())
   .filter((l) => l && !/charset|name="viewport"/.test(l));
+// De testpagina houdt haar eigen korte naam.
+const ti = keep.findIndex((l) => l.startsWith('<title>'));
+if (ti >= 0) keep[ti] = '<title>Briesje 3D boek</title>';
 fs.writeFileSync('dist/artifact.html', keep.join('\n') + '\n' + body.trim() + '\n');
 const files = {};
 for (const f of fs.readdirSync('dist/assets')) files[`assets/${f}`] = `dist/assets/${f}`;
-for (const f of ['poster-wide.webp', 'poster-tall.webp']) files[f] = `dist/${f}`;
+for (const f of ['poster-wide.webp', 'poster-tall.webp']) if (fs.existsSync(`dist/${f}`)) files[f] = `dist/${f}`;
+if (fs.existsSync('dist/echt')) for (const f of fs.readdirSync('dist/echt')) files[`echt/${f}`] = `dist/echt/${f}`;
 fs.writeFileSync('dist/artifact-files.json', JSON.stringify(files, null, 1));
 console.log(keep.length, 'regels in de kop,', Object.keys(files).length, 'bestanden');

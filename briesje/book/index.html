@@ -3,9 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Briesje 3D boek</title>
+    <title>Eikeltje Siem en het betoverende stofje | Kinderboek van Helma Buijs</title>
     <meta name="claude:viewport-fit-sides" content="cover" />
-    <meta name="description" content="Prototype van het 3D boek van Briesje. Alle inhoud is placeholder." />
+    <meta name="description" content="Eikeltje Siem en het betoverende stofje is een kinderboek van Helma Buijs voor 6 tot 9 jaar. Blader door het boek en lees alvast een paar verhalen." />
+    <meta property="og:type" content="book" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content="Briesje" />
+    <meta property="og:title" content="Eikeltje Siem en het betoverende stofje" />
+    <meta property="og:description" content="Kinderboek van Helma Buijs voor 6 tot 9 jaar. Zo klein, maar toch zo groot." />
+    <meta name="theme-color" content="#e7f0db" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "Eikeltje Siem en het betoverende stofje",
+        "author": { "@type": "Person", "name": "Helma Buijs" },
+        "isbn": "9789464915594",
+        "numberOfPages": 91,
+        "inLanguage": "nl",
+        "bookFormat": "https://schema.org/Hardcover",
+        "publisher": { "@type": "Organization", "name": "Boekengilde" },
+        "datePublished": "2024",
+        "typicalAgeRange": "6-9",
+        "genre": "Kinderboek"
+      }
+    </script>
     <link rel="preload" as="image" href="/poster-wide.webp" media="(min-aspect-ratio: 85/100)" />
     <link rel="preload" as="image" href="/poster-tall.webp" media="(max-aspect-ratio: 85/100)" />
     <link rel="stylesheet" href="./src/style.css" />
@@ -25,9 +47,14 @@
       <section class="hero" id="boek" aria-label="Het boek">
         <picture>
           <source media="(max-aspect-ratio: 85/100)" srcset="/poster-tall.webp" />
-          <img class="poster" id="poster" src="/poster-wide.webp" alt="Het boek Briesje, dicht, met twee knuffels ernaast" />
+          <img class="poster" id="poster" src="/poster-wide.webp" alt="Het boek Eikeltje Siem en het betoverende stofje, met Siem ernaast" />
         </picture>
         <div class="stage" id="stage"></div>
+
+        <div class="title">
+          <h1>Eikeltje Siem <span>en het betoverende stofje</span></h1>
+          <p>Een kinderboek van Helma Buijs, voor 6 tot 9 jaar. <em>Zo klein, maar toch zo groot.</em></p>
+        </div>
 
         <button class="hint" id="open" type="button">Tik om het boek te openen</button>
 
@@ -59,12 +86,16 @@
 
       <section class="shop" id="winkel" aria-labelledby="winkel-kop">
         <h2 id="winkel-kop">Winkel</h2>
-        <p class="note">Placeholder. Hier komen de echte producten uit Shopify.</p>
+        <p class="note">De prijzen en de foto's van de knuffels en accessoires volgen nog.</p>
         <ul class="products">
-          <li><div class="ph"></div><strong>Het boek</strong><span>prijs volgt</span></li>
-          <li><div class="ph"></div><strong>Knuffel 1</strong><span>prijs volgt</span></li>
-          <li><div class="ph"></div><strong>Knuffel 2</strong><span>prijs volgt</span></li>
-          <li><div class="ph"></div><strong>Accessoire</strong><span>prijs volgt</span></li>
+          <li>
+            <img id="shopCover" src="/echt/kaft.webp" alt="Kaft van Eikeltje Siem en het betoverende stofje" loading="lazy" width="1024" height="1472" />
+            <strong>Eikeltje Siem en het betoverende stofje</strong>
+            <small>Helma Buijs. Gebonden, 91 bladzijden, voor 6 tot 9 jaar.</small>
+            <span>prijs volgt</span>
+          </li>
+          <li><div class="ph"></div><strong>Knuffels</strong><span>foto en prijs volgen</span></li>
+          <li><div class="ph"></div><strong>Accessoires</strong><span>foto en prijs volgen</span></li>
         </ul>
       </section>
     </main>

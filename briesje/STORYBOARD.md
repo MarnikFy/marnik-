@@ -8,10 +8,10 @@ Dit is stap 1 van de bouw. Er is nog geen code. De keuzes hierin zijn gebaseerd 
 
 | # | Moment | Wat de bezoeker voelt | Wat de bezoeker doet | Wat er te zien is | Duur | Tikken tot een product |
 |---|---|---|---|---|---|---|
-| 0 | Laden | "Dit is er meteen." | Niets | Een stilstaand beeld van het dichte boek met de knuffels ernaast. Menu en winkelwagen staan er al. | Binnen 2,5 s | 1 (knop in het menu) |
+| 0 | Laden | "Dit is er meteen." | Niets | Een stilstaand beeld van het dichte boek met Siem en het groene figuurtje ernaast. Menu en winkelwagen staan er al. | Binnen 2,5 s | 1 (knop in het menu) |
 | 1 | Binnenkomen | Nieuwsgierig: dit is een echt boek. | Kijkt | De camera komt in één beweging tot rust voor het boek. Het stilstaande beeld gaat ongemerkt over in 3D. | 1,5 s, eenmalig | 1 |
 | 2 | Uitnodiging | "Ik mag eraan komen." | Beweegt muis of telefoon, tikt | Het boek ademt licht en draait een paar graden mee. Eén korte regel: "Tik om het boek te openen". | Tot de tik | 1 |
-| 3 | Openen | Verwachting, zoals bij een cadeau uitpakken | Tikt op het boek | Het boek draait naar je toe, de kaft klapt open over de rug, de camera zakt naar de eerste spread. De knuffels schuiven uit beeld, zodat het boek alle aandacht krijgt. | 1,2 s | 1 |
+| 3 | Openen | Verwachting, zoals bij een cadeau uitpakken | Tikt op het boek | Het boek draait naar je toe, de kaft klapt open over de rug, de camera zakt naar de eerste spread. Het betoverende stofje stuift op. De figuurtjes schuiven uit beeld, zodat het boek alle aandacht krijgt. | 1,2 s | 1 |
 | 4 | Inhoudsopgave | Overzicht en keuze | Kiest een verhaal | Links: wat Briesje is, in twee zinnen, met de knop "Bestel het boek". Rechts: de verhaaltjes met een kleine tekening. | Zo lang als nodig | 1 |
 | 5 | Naar het verhaal | Plezier: het boek doet wat een boek doet | Kijkt | De bladzijden bladeren zichtbaar door naar het gekozen verhaal. De link in de adresbalk verandert mee. | Maximaal 1,5 s | 1 |
 | 6 | Lezen | Rust. Het boek staat het verhaal niet in de weg. | Bladert: slepen aan een hoek, swipen, pijlen of toetsenbord | Tekst en tekening zoals in het gedrukte boek. Op de telefoon één bladzijde tegelijk. Een dunne streep toont hoe ver je bent. | Per bladzijde 0,6 s om te slaan | 1 |
@@ -75,3 +75,9 @@ Wat dat betekent voor de site:
 * Op de laatste bladzijde van een verhaal staat hoeveel verhalen er nog in het boek zitten.
 
 Nog te kiezen: welke verhalen het worden. Kies de sterkste, niet de eerste. Eén verhaal dat mensen uitlezen verkoopt meer dan drie waar ze halverwege afhaken.
+
+## Bijgewerkt op 16 november 2026
+
+* Naast het boek staan nu de tekeningen van Siem en het groene figuurtje, niet de foto's van de knuffels. Die foto's zijn er nog niet.
+* Tik je op een figuurtje, dan springt het op. De weg naar de winkel loopt via de knop in het menu.
+* Bij het openen stuift het betoverende stofje op: een handvol gouden glinsteringen, één keer. Boven het dichte boek glinstert er één, als uitnodiging.
