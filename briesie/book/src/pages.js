@@ -334,7 +334,7 @@ export function drawToc() {
   ctx.lineTo(TEX_W - 100, y);
   ctx.stroke();
   if (imgs.green) {
-    const w = 400;
+    const w = 330;
     const h = w * (imgs.green.naturalHeight / imgs.green.naturalWidth);
     ctx.drawImage(imgs.green, TEX_W - w - 110, y + 70, w, h);
   }

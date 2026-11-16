@@ -30,7 +30,7 @@ export const images = {
 };
 export const alts = {
   cover: 'De kaft van Eikeltje Siem en het betoverende stofje',
-  green: 'Het mannetje uit het boek',
+  green: 'Het groene monster uit het boek',
   siem: 'Eikeltje Siem',
   dust: 'Het betoverende stofje',
 };

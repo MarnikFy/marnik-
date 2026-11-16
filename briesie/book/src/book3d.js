@@ -184,7 +184,7 @@ export function createBook(container, { reduced = false, imgs = {} } = {}) {
   const plush = [];
   const blobTex = tex(draw.drawBlob(), renderer);
   [
-    { img: imgs.green, label: 'Figuurtje', tint: '#9cc46a', w: 0.66, wide: [-1.04, -0.02], tall: [-0.36, 1.04] },
+    { img: imgs.green, label: 'Monster', tint: '#9cc46a', w: 0.58, wide: [-1.02, 0.0], tall: [-0.4, 1.06] },
     { img: imgs.siem, label: 'Siem', tint: '#e2b07a', w: 0.46, wide: [1.0, 0.3], tall: [0.46, 1.08] },
   ].forEach((d, i) => {
     const src = d.img || draw.drawFigure(d.label, d.tint);

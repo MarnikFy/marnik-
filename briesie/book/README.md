@@ -6,6 +6,7 @@ Los prototype van het boek uit `../STORYBOARD.md`. De kaft, de figuurtjes, het s
 
 ```
 npm install
+npm run monster    # maakt het groene monster vrijstaand en zet hem rechtop
 npm run assets     # zet de echte beelden uit ../bestanden-lokaal/ om naar public/echt/
 npm run dev        # ontwikkelen, op http://localhost:5173
 npm run build      # bouwt naar dist/

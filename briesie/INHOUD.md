@@ -30,12 +30,13 @@ Gevonden in je uploads bij Higgsfield (juni 2026). Ze staan lokaal in `bestanden
 |---|---|---|
 | `kaft-foto.jpg` | Foto van de voorkant van het boek, 1128 bij 1600 pixels | De kaft van het 3D boek en het product in de winkel |
 | `siem.png` | Eikeltje Siem, vrijstaand | Figuurtje naast het boek |
-| `figuur-groen.png` | Het mannetje uit het boek, vrijstaand, tuimelend | Figuurtje naast het boek |
+| `monster-blauw.jpg` | Het groene monster, getekend op een blauwe achtergrond | Bron voor het figuurtje naast het boek |
+| `figuur-groen.png` | Het groene monster, vrijgemaakt uit die tekening en rechtop gezet | Figuurtje naast het boek en in de verhalen |
 | `stofje.png` | Gouden glinstering | Het betoverende stofje bij het openen |
 
 Wat je over deze beelden moet weten:
 * **De kaft is een telefoonfoto.** Ik heb hem lichter en neutraler gemaakt, zodat wit weer wit is. De kleuren zijn dus een benadering van de druk.
-* **Het mannetje wijkt af van het boek.** Op de kaft heeft het roze haar en is het met kleurpotlood getekend. Het losse plaatje heeft rood met geel haar en is gladder. Wie het boek kent, ziet het verschil.
+* **Het groene monster komt nu uit de tekening op blauw.** Ik heb de achtergrond weggehaald en hem 60 graden gedraaid, zodat hij rechtop staat. Zijn haar is rood, op de kaft is het roze.
 * **Van het stofje heb ik de grijze waas weggehaald**, zodat het op een lichte pagina niet als rook oogt.
 
 ## Kleuren en letter

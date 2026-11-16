@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173 --strictPort",
+    "monster": "node scripts/monster.mjs",
     "assets": "node scripts/assets.mjs",
     "poster": "node scripts/poster.mjs",
     "verify": "node scripts/verify.mjs"
