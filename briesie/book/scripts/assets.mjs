@@ -42,3 +42,9 @@ if (has('stofje.png')) {
   }
   await report('stofje.webp', sharp(data, { raw: info }).webp({ quality: 72, alphaQuality: 80 }));
 }
+
+// Productfoto's van de wensbuisjes, uit de oude site.
+for (const n of [1, 2, 3, 4]) {
+  if (!has(`wensbuisje-${n}.webp`)) continue;
+  await report(`wensbuisje-${n}.webp`, sharp(`${src}/wensbuisje-${n}.webp`).resize({ width: 420 }).webp({ quality: 78 }));
+}

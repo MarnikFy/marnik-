@@ -46,6 +46,12 @@ for (const [name, prof] of Object.entries(profiles)) {
   await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
   await page.waitForTimeout(500);
   await shot('3-boek');
+  await page.goto(base + '#een-eikeltje-dat-tot-leven-komt', { waitUntil: 'load' });
+  await page.reload();
+  await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
+  await page.waitForTimeout(500);
+  await shot('4-eikeltje');
+  await page.locator('#winkel').screenshot({ path: `${out}/${name}-5-winkel.png` });
   console.log(name, 'fouten:', errors.length ? errors : 'geen');
   await ctx.close();
 }

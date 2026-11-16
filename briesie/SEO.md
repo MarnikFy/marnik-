@@ -5,7 +5,7 @@ Wat er nu in de site zit, wat nog moet, en twee dingen over de naam die je moet 
 ## De naam Briesie is vrij
 
 * **Briesie**, met "ie", is de echte naam. Ik heb geen andere site, winkel of organisatie met die naam gevonden.
-* **briesie.nl lijkt vrij.** In het register van .nl-domeinen staat het op 16 november 2026 niet geregistreerd. Controleer dit bij een registrar en leg het snel vast.
+* **briesie.nl is het bedoelde adres.** De oude site verwijst naar www.briesie.nl. In het register van .nl-domeinen stond het op 16 november 2026 nog niet geregistreerd. Leg het vast als dat nog niet gebeurd is.
 * **eikeltjesiem.nl lijkt ook vrij.** Neem die erbij en stuur hem door naar de hoofdsite.
 
 Eén ding om te weten: mensen die de naam horen, typen vaak "briesje" met een j. Op briesje.com zit een andere organisatie, die werkt met jongeren en zich presenteert in de suïcidepreventie. Zet daarom de titel van het boek en de naam van Helma altijd bij de naam Briesie, zodat Google en bezoekers het verschil zien.

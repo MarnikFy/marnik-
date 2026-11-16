@@ -100,7 +100,7 @@ for (const [name, prof] of Object.entries(profiles)) {
     await at(page, mobile ? 2 : 3, mobile ? 0 : null);
     check(name, 'slepen aan de bladzijde slaat hem om', true);
     if (mobile) { await page.click('#next'); await at(page, 2, 1); check(name, 'knop volgende werkt', true); }
-    else check(name, 'aan het einde van het boek kan volgende niet meer', await page.evaluate(() => document.getElementById('next').disabled));
+    else { await page.click('#next'); await at(page, 4); check(name, 'aan het einde van het boek kan volgende niet meer', await page.evaluate(() => document.getElementById('next').disabled)); }
 
     // Einde van een verhaal
     await page.waitForTimeout(200);

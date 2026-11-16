@@ -20,7 +20,9 @@ Bijgewerkt op 16 november 2026, na de aantekeningen van Helma. Alles op de site 
 
 Bron catalogus: [bibliotheek.nl](https://www.bibliotheek.nl/catalogus/titel.444173927.html/eikeltje-siem-en-het-betoverende-stofje-helma-buijs/).
 
-Niet gebruikt: de prijs van € 17,95 die ooit in de winkel van Boekengilde stond. Het boek staat daar nu niet meer, en jullie eigen prijs ken ik niet.
+De prijs op de site is € 14,95, zoals op de oude website. Bij Boekengilde stond ooit € 17,95.
+
+De producten, prijzen en wat ik uit de oude website heb overgenomen staan in `ANALYSE-OUDE-SITE.md`.
 
 ## De beelden
 
@@ -105,13 +107,13 @@ Wat ik niet zeker weet of niet heb:
 
 Dit is nog placeholder op de site, of nog onbekend.
 
-1. **De tekst van het kinderboek zelf.** Er staat nog geen stukje uit Eikeltje Siem op de site.
-2. **De alinea "Want ... detail"** van de oude site.
-3. **De oude website.** Daar stonden meer teksten en beelden. Ik heb hem nooit gezien.
+1. **De alinea "Want ... detail"** uit de aantekening van Helma.
+2. **Bevestiging van Helma** over de leeftijd (6 tot 9 of 3 tot 7 jaar) en of het openingsstuk letterlijk uit het boek komt.
+3. **Foto's van het gevilte eikeltje en het cadeaupakket.**
 4. **Een foto van Helma**, voor bij haar verhaal.
 5. **De tekeningen uit het boek**, het liefst als scan of uit het drukbestand.
 6. **De achterkant en de rug van het boek**, voor het 3D boek.
-7. **De producten.** Foto's, namen en prijzen van de naaldvilten figuurtjes en accessoires, en de prijs van het boek.
+7. **Echte reacties van lezers**, met naam en toestemming.
 8. **Bedrijfsgegevens** voor de verplichte pagina's: naam, KvK, btw-nummer, retouradres.
 9. **Toestemming van Helma** voor het gebruik van tekst en tekeningen op de site en op producten.
 

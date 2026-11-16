@@ -18,6 +18,7 @@ export const book = {
   // Verhouding van één bladzijde (breedte : hoogte), afgeleid van de kaft.
   pageRatio: 1.42,
   buyUrl: '#winkel',
+  email: 'nico@masero.nl',
 };
 
 // De beelden staan in public/echt/ en niet in git. Ontbreken ze, dan tekent
@@ -72,14 +73,29 @@ export const stories = [
     ],
   },
   {
+    // Tekst van de oude site. De gedachtestreepjes zijn vervangen door puntjes.
+    slug: 'een-eikeltje-dat-tot-leven-komt',
+    title: 'Een eikeltje dat tot leven komt',
+    pages: [
+      [
+        { t: 'p', text: 'Gekleurde stofjes dwarrelen door de lucht en raken een eikeltje hoog in de boom. Pats!' },
+        { t: 'p', text: 'Heel voorzichtig, maar dan ineens... PLOP! Twee bruine armpjes en... PLOP! Twee kleine beentjes met rode schoentjes, die zomaar kunnen bewegen!' },
+      ],
+      [
+        { t: 'img', img: 'siem', h: 330 },
+        { t: 'p', text: 'En daar is ook een vrolijk klein hoofdje. Eikeltje doet zijn oogjes open en ziet allemaal bewegende blaadjes om zich heen.' },
+        { t: 'big', text: 'Hij leeft!' },
+      ],
+    ],
+  },
+  {
     slug: 'eikeltje-siem',
     title: 'Eikeltje Siem',
     pages: [
       [
         { t: 'tag', text: 'Zo klein, maar toch zo groot' },
-        { t: 'p', text: 'Eikeltje Siem en het betoverende stofje is het kinderboek van Helma Buijs.' },
-        { t: 'p', text: 'Voor kinderen van 6 tot 9 jaar. Gebonden, 91 bladzijden.' },
-        { t: 'img', img: 'siem', h: 330 },
+        { t: 'p', text: 'Eikeltje is niet zo dapper; hij is bang om opgegeten te worden. Hij ontmoet Kiki de kraai en Pippa het roodborstje.' },
+        { t: 'p', text: 'Samen beleven ze grootse avonturen, en Eikeltje ontdekt dat hij veel dapperder is dan hij altijd dacht.' },
       ],
       [
         { t: 'img', img: 'cover', h: 640 },
@@ -95,3 +111,13 @@ export const SHEETS = stories.length; // de laatste rechterbladzijde ligt op het
 // Spread s = aantal omgeslagen vellen. Spread 0 is de inhoudsopgave.
 export const storyStartSpread = (i) => i + 1;
 export const storyOfSpread = (s) => (s >= 1 && s <= stories.length ? s - 1 : -1);
+
+// De producten en prijzen van de oude site. Het cadeaupakket en het losse
+// eikeltje hebben nog geen eigen foto.
+export const products = [
+  { name: 'Eikeltje Siem en het betoverende stofje', tag: 'Het boek', price: 14.95, img: './echt/kaft.webp', text: 'Het kinderboek van Helma Buijs. Gebonden, 91 bladzijden.' },
+  { name: 'Wensbuisje met gevilt figuurtje', tag: 'Handgemaakt', price: 6.95, img: './echt/wensbuisje-1.webp', text: 'Glazen buisje met houten voet, lampjes en een met de hand gevilt figuurtje.' },
+  { name: 'Gevilt eikeltje', tag: 'Handgemaakt', price: 3.95, img: '', text: 'Met de hand gevilt. Geen twee zijn precies hetzelfde.' },
+  { name: 'Cadeaupakket: boek en gevilt eikeltje', tag: 'Samen', price: 17.95, img: '', text: 'Het boek samen met een handgemaakt gevilt eikeltje.' },
+];
+export const shipping = { cost: 2.95, freeFrom: 25 };

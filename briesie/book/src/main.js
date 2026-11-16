@@ -1,6 +1,6 @@
 // Besturing van de pagina. Het 3D boek wordt pas geladen nadat het
 // stilstaande beeld er staat, zodat het eerste beeld er meteen is.
-import { book as meta, images, alts, stories, SHEETS, storyStartSpread, storyOfSpread } from './content.js';
+import { book as meta, images, alts, stories, products, shipping, SHEETS, storyStartSpread, storyOfSpread } from './content.js';
 import { tocItems } from './pages.js';
 
 const $ = (id) => document.getElementById(id);
@@ -22,8 +22,20 @@ $('lezen').innerHTML =
   `<p class="more">Het hele verhaal staat in het boek ${meta.fullTitle} van ${meta.author}. <a href="${meta.buyUrl}">Bestel het boek</a></p>`;
 $('lezen').querySelectorAll('img').forEach((img) => img.addEventListener('error', () => img.remove()));
 
+// ---- De winkel ----------------------------------------------------------
+const euro = (n) => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(n);
+$('producten').innerHTML = products
+  .map(
+    (p) => `<li>${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" />` : '<div class="ph"><span>foto volgt</span></div>'}
+      <small class="kind">${p.tag}</small><strong>${p.name}</strong><small>${p.text}</small><span class="price">${euro(p.price)}</span></li>`,
+  )
+  .join('');
+$('producten').querySelectorAll('img').forEach((img) => img.addEventListener('error', () => img.replaceWith(Object.assign(document.createElement('div'), { className: 'ph' }))));
+$('verzending').textContent = `Verzending binnen Nederland ${euro(shipping.cost)}, gratis vanaf ${euro(shipping.freeFrom)}.`;
+$('mail').textContent = meta.email;
+
 // Ontbreekt een beeld, dan verdwijnt het zonder kapot icoontje.
-for (const id of ['poster', 'shopCover']) {
+for (const id of ['poster']) {
   const img = $(id);
   const gone = () => (id === 'poster' ? img.remove() : img.replaceWith(Object.assign(document.createElement('div'), { className: 'ph' })));
   if (img.complete && !img.naturalWidth) gone();

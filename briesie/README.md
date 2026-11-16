@@ -6,6 +6,7 @@ Website en webshop van Briesie, met een 3D boek als hero.
 |---|---|
 | `PLAN.md` | Wat we bouwen, waarom, en in welke fases |
 | `INHOUD.md` | Wat er echt is over het boek, met bron, en wat nog ontbreekt |
+| `ANALYSE-OUDE-SITE.md` | Wat uit de oude website is overgenomen, wat niet, en waarom |
 | `SEO.md` | Vindbaarheid, verkoop en het probleem met de naam Briesie |
 | `REFERENTIES.md` | Onderzoek naar zes sites die 3D met een verhaal combineren, en welke open broncode bruikbaar is |
 | `STORYBOARD.md` | Wat de bezoeker per moment voelt, doet en ziet, plus het budget |

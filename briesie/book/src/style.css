@@ -133,11 +133,18 @@ body.textmode .mode { position: static; }
 .shop { min-height: 100svh; scroll-margin-top: var(--bar); background: var(--band); padding-block: 20px 80px; padding-left: var(--gl); padding-right: var(--gr); border-top: 3px solid var(--green); }
 .shop h2 { font: 900 30px/1.2 var(--serif); color: var(--green); margin: 0; height: 48px; display: flex; align-items: center; }
 .note { color: var(--soft); margin: 4px 0 24px; }
-.products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }
+.products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px 18px; max-width: 62rem; }
 .products li { display: flex; flex-direction: column; gap: 4px; }
 .products .ph { aspect-ratio: 4 / 5; border: 2px dashed var(--green); opacity: 0.45; border-radius: 10px; margin-bottom: 8px; }
 .products img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: contain; background: var(--paper); border-radius: 10px; margin-bottom: 8px; padding: 10px; }
 .products small { color: var(--soft); font-size: 14px; line-height: 1.35; }
+.products .kind { font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px; }
+.products .price { font: 900 20px/1.2 var(--serif); color: var(--green); margin-top: 4px; }
+.products .ph { display: grid; place-items: center; }
+.products .ph span { font-size: 14px; color: var(--green); }
+.products img { object-fit: cover; padding: 0; }
+.contact { margin: 32px 0 0; font-weight: 600; }
+.contact span { font-weight: 800; user-select: all; }
 .products span { color: var(--soft); font-size: 15px; }
 
 dialog { border: 1.5px solid var(--ink); border-radius: 16px; background: var(--paper); color: var(--ink); padding: 26px; max-width: min(92vw, 26rem); }
