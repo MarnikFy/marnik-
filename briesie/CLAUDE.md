@@ -1,6 +1,6 @@
-# Briesje
+# Briesie
 
-Shopify webshop met een 3D boek als hero. De bezoeker opent het boek, kiest een verhaal uit de inhoudsopgave en leest het door te bladeren. Verkocht worden het boek, knuffels en accessoires.
+Shopify webshop met een 3D boek als hero. De bezoeker opent het boek, kiest een verhaal uit de inhoudsopgave en leest het door te bladeren. Briesie is van Helma Buijs: zij maakt naaldvilten figuurtjes en schreef het kinderboek Eikeltje Siem en het betoverende stofje. Verkocht worden het boek, de figuurtjes en accessoires. De naam is Briesie, met "ie".
 
 ## Altijd eerst
 

@@ -30,7 +30,7 @@ Onderzocht op 13 november 2026. Elke site is geopend in een echte browser (Chrom
 * **Oryzo.** Het product ligt vanaf het eerste beeld midden in het scherm, met de naam er groot boven. Het menu staat altijd rechtsboven. Scrollen vertelt stap voor stap wat het product kan.
 * **Messenger en Bruno Simon.** Geen verhaal dat je leest, maar een wereld waarin je rondloopt of rijdt.
 
-## Wat dit betekent voor Briesje
+## Wat dit betekent voor Briesie
 
 1. **Een bewuste start is normaal.** De drie echte verhaalsites laten je eerst ergens op tikken. Bij ons is dat het boek zelf. Dat is sterker dan een knop, want de handeling betekent iets.
 2. **Deze sites zijn te zwaar voor een winkel.** Ze laden 3,4 tot 43 MB. Het zit vooral in muziek en video. Wij gebruiken geen van beide en houden 1,5 MB aan tot de eerste tik.

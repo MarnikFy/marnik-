@@ -17,7 +17,8 @@ const OVER = 0.025; // kaft steekt uit voorbij de bladzijden
 const TC = 0.018; // dikte van het karton
 const GAP = 0.006; // afstand tussen twee vellen
 const SHEET_T = 0.0032;
-const T = SHEETS * GAP; // dikte van het boekblok
+const TB = 0.045; // de rest van het boek: een blok bladzijden dat blijft liggen
+const T = SHEETS * GAP + TB; // dikte van het boekblok
 const SEG = 24; // botten per bladzijde
 const HOVER = 0.16;
 
@@ -32,6 +33,7 @@ function tex(canvas, renderer) {
 }
 
 export function createBook(container, { reduced = false, imgs = {} } = {}) {
+  draw.setImages(imgs);
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.shadowMap.enabled = true;
@@ -95,7 +97,7 @@ export function createBook(container, { reduced = false, imgs = {} } = {}) {
   const coverG = new Group(); // scharnier bij de voorkaft
   coverG.position.set(0, 0, T);
   spineG.add(coverG);
-  const front = new Mesh(boardGeo, [edgeMat, hidden, edgeMat, edgeMat, linen(draw.drawCoverFront(imgs.cover)), linen(draw.drawInsideFront())]);
+  const front = new Mesh(boardGeo, [edgeMat, hidden, edgeMat, edgeMat, linen(draw.drawCoverFront()), linen(draw.drawInsideFront())]);
   front.castShadow = true;
   coverG.add(front);
 
@@ -116,7 +118,15 @@ export function createBook(container, { reduced = false, imgs = {} } = {}) {
     sheetGeo.setAttribute('skinIndex', new Uint16BufferAttribute(idx, 4));
     sheetGeo.setAttribute('skinWeight', new Float32BufferAttribute(wts, 4));
   }
-  const paperEdge = new MeshStandardMaterial({ color: 0xf1efe4, roughness: 0.95 });
+  const paperEdge = new MeshStandardMaterial({ color: 0xf3f1e6, roughness: 0.95 });
+
+  // Het boekblok: de rest van het boek. De bovenkant is de laatste bladzijde.
+  const blockGeo = new BoxGeometry(W, H, TB);
+  blockGeo.translate(W / 2, 0, -T / 2 + TB / 2);
+  const block = new Mesh(blockGeo, [paperEdge, hidden, paperEdge, paperEdge, new MeshStandardMaterial({ map: tex(draw.drawBlockTop(), renderer), roughness: 0.94 }), hidden]);
+  block.castShadow = true;
+  block.receiveShadow = true;
+  lay.add(block);
   const blankR = tex(draw.drawBlank('right'), renderer);
   const blankL = tex(draw.drawBlank('left'), renderer);
 
@@ -482,8 +492,8 @@ export function createBook(container, { reduced = false, imgs = {} } = {}) {
 
   function next() {
     if (mode !== 'open') return;
-    if (spread >= SHEETS) return;
     if (single && side === 0) return turnTo(spread, 1);
+    if (spread >= SHEETS) return;
     return turnTo(spread + 1, single ? 0 : 1);
   }
   function prev() {
@@ -517,7 +527,7 @@ export function createBook(container, { reduced = false, imgs = {} } = {}) {
   // Raakpunt op het vlak van de bovenste bladzijde, als uv van die bladzijde.
   function pageHit(cx, cy) {
     setRay(cx, cy);
-    const rightTop = spread < SHEETS ? zRight(spread) : -T / 2;
+    const rightTop = spread < SHEETS ? zRight(spread) : -T / 2 + TB;
     const leftTop = spread > 0 ? zLeft(spread - 1) : -T / 2;
     const out = new Vector3();
     for (const [sd, z] of [[1, rightTop], [0, leftTop]]) {
@@ -536,7 +546,7 @@ export function createBook(container, { reduced = false, imgs = {} } = {}) {
   }
   // Schermpositie van een punt op de rechterbladzijde (voor tests en focus).
   function pagePoint(u, v) {
-    const p = new Vector3(u * W, T / 2 + TC + zRight(Math.min(spread, SHEETS - 1)), v * H - H / 2).project(camera);
+    const p = new Vector3(u * W, T / 2 + TC + (spread < SHEETS ? zRight(spread) : -T / 2 + TB), v * H - H / 2).project(camera);
     const r = renderer.domElement.getBoundingClientRect();
     return { x: r.left + ((p.x + 1) / 2) * r.width, y: r.top + ((1 - p.y) / 2) * r.height };
   }

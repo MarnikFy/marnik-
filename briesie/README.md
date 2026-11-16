@@ -1,12 +1,12 @@
-# Briesje
+# Briesie
 
-Website en webshop van Briesje, met een 3D boek als hero.
+Website en webshop van Briesie, met een 3D boek als hero.
 
 | Bestand | Waarvoor |
 |---|---|
 | `PLAN.md` | Wat we bouwen, waarom, en in welke fases |
 | `INHOUD.md` | Wat er echt is over het boek, met bron, en wat nog ontbreekt |
-| `SEO.md` | Vindbaarheid, verkoop en het probleem met de naam Briesje |
+| `SEO.md` | Vindbaarheid, verkoop en het probleem met de naam Briesie |
 | `REFERENTIES.md` | Onderzoek naar zes sites die 3D met een verhaal combineren, en welke open broncode bruikbaar is |
 | `STORYBOARD.md` | Wat de bezoeker per moment voelt, doet en ziet, plus het budget |
 | `CLAUDE.md` | Werkregels voor Claude Code, die automatisch gelezen worden |
@@ -18,6 +18,6 @@ Website en webshop van Briesje, met een 3D boek als hero.
 ## Repo aanmaken (eenmalig)
 
 1. Ga naar github.com/new.
-2. Vul bij naam `briesje` in, kies **Private**, en vink niets aan (geen README, geen .gitignore, geen licentie). Klik op "Create repository".
-3. Ga naar github.com/settings/installations, klik bij "Claude" op Configure. Staat daar "Only select repositories", voeg `briesje` toe en sla op.
+2. Vul bij naam `briesie` in, kies **Private**, en vink niets aan (geen README, geen .gitignore, geen licentie). Klik op "Create repository".
+3. Ga naar github.com/settings/installations, klik bij "Claude" op Configure. Staat daar "Only select repositories", voeg `briesie` toe en sla op.
 4. Laat het Claude weten. Die zet dit plan erin.

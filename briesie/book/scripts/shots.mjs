@@ -21,26 +21,31 @@ for (const [name, prof] of Object.entries(profiles)) {
   page.on('pageerror', (e) => errors.push(String(e)));
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
   await page.goto(base + '?still', { waitUntil: 'load' });
-  await page.waitForFunction(() => window.__briesje?.ready, null, { timeout: 60000 });
+  await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
   const shot = (tag) => page.screenshot({ path: `${out}/${name}-${tag}.png` });
   await page.evaluate(() => document.body.classList.remove('still'));
   await page.waitForTimeout(600);
   await shot('0-dicht');
   for (const t of [0, 0.3, 0.6, 0.9, 1.2]) {
-    await page.evaluate((t) => window.__briesje.book.seekOpen(t), t);
+    await page.evaluate((t) => window.__briesie.book.seekOpen(t), t);
     await page.waitForTimeout(150);
     await shot(`open-${String(t).replace('.', '')}`);
   }
   await page.goto(base + '#inhoud', { waitUntil: 'load' });
   await page.reload();
-  await page.waitForFunction(() => window.__briesje?.ready, null, { timeout: 60000 });
+  await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
   await page.waitForTimeout(500);
   await shot('1-inhoud');
-  await page.goto(base + '#verhaal-2', { waitUntil: 'load' });
+  await page.goto(base + '#waar-het-begon', { waitUntil: 'load' });
   await page.reload();
-  await page.waitForFunction(() => window.__briesje?.ready, null, { timeout: 60000 });
+  await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
   await page.waitForTimeout(500);
   await shot('2-verhaal');
+  await page.goto(base + '#eikeltje-siem', { waitUntil: 'load' });
+  await page.reload();
+  await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
+  await page.waitForTimeout(500);
+  await shot('3-boek');
   console.log(name, 'fouten:', errors.length ? errors : 'geen');
   await ctx.close();
 }

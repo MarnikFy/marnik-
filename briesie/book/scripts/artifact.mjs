@@ -10,7 +10,7 @@ const keep = head
   .filter((l) => l && !/charset|name="viewport"/.test(l));
 // De testpagina houdt haar eigen korte naam.
 const ti = keep.findIndex((l) => l.startsWith('<title>'));
-if (ti >= 0) keep[ti] = '<title>Briesje 3D boek</title>';
+if (ti >= 0) keep[ti] = '<title>Briesie 3D boek</title>';
 fs.writeFileSync('dist/artifact.html', keep.join('\n') + '\n' + body.trim() + '\n');
 const files = {};
 for (const f of fs.readdirSync('dist/assets')) files[`assets/${f}`] = `dist/assets/${f}`;

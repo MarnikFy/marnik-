@@ -1,4 +1,4 @@
-# Bronbestanden Briesje
+# Bronbestanden Briesie
 
 Zet hier alles waar de website op gebouwd wordt. De bouwer haalt alle inhoud uit deze map en verzint niets zelf. Het maakt niet uit hoe netjes het is: sleep alles erin, het wordt in fase 1 uitgezocht.
 
@@ -10,7 +10,7 @@ Zet hier alles waar de website op gebouwd wordt. De bouwer haalt alle inhoud uit
 2. Klik op "Add file" en dan "Upload files".
 3. Sleep je bestanden of mappen erin en klik op "Commit changes".
 
-Een los bestand mag maximaal 25 MB zijn. Grotere bestanden, zoals een drukbestand of video, kun je in Google Drive zetten in een map met Briesje in de naam.
+Een los bestand mag maximaal 25 MB zijn. Grotere bestanden, zoals een drukbestand of video, kun je in Google Drive zetten in een map met Briesie in de naam.
 
 ## Wat erin moet
 
@@ -20,6 +20,6 @@ Een los bestand mag maximaal 25 MB zijn. Grotere bestanden, zoals een drukbestan
 4. **Knuffels.** Vrijstaande foto's (zonder achtergrond), vanuit een paar hoeken. Plus naam, prijs en beschrijving, de gegevens van de leverancier en de CE- en veiligheidsdocumenten.
 5. **Accessoires.** Per product de naam, prijs, beschrijving en foto's.
 6. **Huisstijl.** Logo, kleuren en lettertypen, als die er zijn.
-7. **Over Briesje.** Wat het is, voor welke leeftijd en wie erachter zit.
+7. **Over Briesie.** Wat het is, voor welke leeftijd en wie erachter zit.
 8. **Bedrijfsgegevens.** Bedrijfsnaam, KvK, btw-nummer, retouradres en contactgegevens.
 9. **Voorbeelden.** Links of screenshots van sites of boeken waarvan je de sfeer mooi vindt.

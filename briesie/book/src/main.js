@@ -1,6 +1,6 @@
 // Besturing van de pagina. Het 3D boek wordt pas geladen nadat het
 // stilstaande beeld er staat, zodat het eerste beeld er meteen is.
-import { book as meta, images, stories, SHEETS, storyStartSpread, storyOfSpread } from './content.js';
+import { book as meta, images, alts, stories, SHEETS, storyStartSpread, storyOfSpread } from './content.js';
 import { tocItems } from './pages.js';
 
 const $ = (id) => document.getElementById(id);
@@ -13,15 +13,14 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || params
 if (still) document.body.classList.add('still');
 
 // ---- De verhalen als gewone tekst (altijd in de pagina) -----------------
+const blockHtml = (b) =>
+  b.t === 'img'
+    ? `<img src="${images[b.img]}" alt="${alts[b.img]}" loading="lazy" />`
+    : `<p class="${b.t}">${b.text}${b.heart ? ' <span aria-hidden="true">&#9825;</span>' : ''}</p>`;
 $('lezen').innerHTML =
-  stories
-    .map(
-      (s) => `<article id="tekst-${s.slug}"><h2>${s.title}</h2>${s.pages
-        .map((p) => p.text.map((t) => `<p>${t}</p>`).join(''))
-        .join('')}</article>`,
-    )
-    .join('') +
+  stories.map((s) => `<article id="tekst-${s.slug}"><h2>${s.title}</h2>${s.pages.flat().map(blockHtml).join('')}</article>`).join('') +
   `<p class="more">Het hele verhaal staat in het boek ${meta.fullTitle} van ${meta.author}. <a href="${meta.buyUrl}">Bestel het boek</a></p>`;
+$('lezen').querySelectorAll('img').forEach((img) => img.addEventListener('error', () => img.remove()));
 
 // Ontbreekt een beeld, dan verdwijnt het zonder kapot icoontje.
 for (const id of ['poster', 'shopCover']) {
@@ -130,15 +129,15 @@ function render(st) {
   ui.hidden = st.mode === 'closed';
   if (st.mode === 'busy') return;
   const atStart = st.spread === 0 && (!st.single || st.side === 0);
-  const atEnd = st.spread === SHEETS;
+  const atEnd = st.spread === SHEETS && (!st.single || st.side === 1);
   $('prev').disabled = atStart;
   $('next').disabled = atEnd;
 
+  // Elk verhaal is één spread. Aan het einde ervan: het volgende verhaal en de koopknop.
   const i = storyOfSpread(st.spread);
-  const start = i >= 0 ? storyStartSpread(i) : -1;
-  const lastOfStory = i >= 0 && st.spread === start + 1 && (!st.single || st.side === 1);
+  const lastOfStory = i >= 0 && (!st.single || st.side === 1);
   const end = $('end');
-  end.hidden = !(lastOfStory || atEnd) || st.mode !== 'open';
+  end.hidden = !lastOfStory || st.mode !== 'open';
   hero.classList.toggle('at-end', !end.hidden);
   const nextStory = $('nextStory');
   if (lastOfStory && i + 1 < stories.length) {
@@ -148,17 +147,13 @@ function render(st) {
     nextStory.href = `#${stories[i + 1].slug}`;
   } else nextStory.hidden = true;
 
+  // Voortgang door het hele boek.
   const bar = $('progress');
-  bar.hidden = i < 0;
-  if (i >= 0) {
-    const total = stories[i].pages.length;
-    const read = st.single ? (st.spread - start) * 2 + st.side + 1 : (st.spread - start + 1) * 2;
-    const pct = Math.round((Math.min(read, total) / total) * 100);
-    bar.firstElementChild.style.width = pct + '%';
-    bar.setAttribute('aria-valuenow', String(pct));
-  }
-  $('live').textContent =
-    st.mode === 'closed' ? 'Het boek is dicht.' : i >= 0 ? `${stories[i].title}, ${st.spread - start + 1} van 2` : atEnd ? 'Einde van het boek.' : 'Inhoud';
+  bar.hidden = st.mode !== 'open';
+  const pct = Math.round(((st.spread * 2 + (st.single ? st.side : 1)) / (SHEETS * 2 + 1)) * 100);
+  bar.firstElementChild.style.width = pct + '%';
+  bar.setAttribute('aria-valuenow', String(pct));
+  $('live').textContent = st.mode === 'closed' ? 'Het boek is dicht.' : i >= 0 ? stories[i].title : 'Inhoud';
   syncAddress(st);
 }
 
@@ -219,16 +214,15 @@ function tap(x, y) {
   if (!hit) return;
   if (st.spread === 0 && hit.side === 1) {
     const it = tocItems.find((t) => hit.u >= t.u0 && hit.u <= t.u1 && hit.v >= t.v0 && hit.v <= t.v1);
-    if (!it) return;
-    if (it.open) return go(storyStartSpread(it.index));
-    return $('locked').showModal();
+    if (it) go(storyStartSpread(it.index));
+    return;
   }
   step(hit.side === 1 ? 1 : -1);
 }
 
 function bindKeys() {
   document.addEventListener('keydown', (e) => {
-    if (!book || $('locked').open || document.body.classList.contains('textmode')) return;
+    if (!book || document.body.classList.contains('textmode')) return;
     if (e.target.closest && e.target.closest('input, textarea, select')) return;
     const st = book.state();
     if (st.mode !== 'open') return;
@@ -244,8 +238,6 @@ function bindKeys() {
   $('next').addEventListener('click', () => step(1));
   $('toc').addEventListener('click', () => go(0));
   $('close').addEventListener('click', () => book.close().then(() => $('open').focus({ preventScroll: true })));
-  $('lockedClose').addEventListener('click', () => $('locked').close());
-  $('lockedBuy').addEventListener('click', () => $('locked').close());
   window.addEventListener('hashchange', applyRoute);
 }
 
@@ -281,12 +273,12 @@ async function start() {
 
   let seen = false;
   try {
-    seen = sessionStorage.getItem('briesje-intro') === '1';
-    sessionStorage.setItem('briesje-intro', '1');
+    seen = sessionStorage.getItem('briesie-intro') === '1';
+    sessionStorage.setItem('briesie-intro', '1');
   } catch {}
   if (!seen && !still && book.state().mode === 'closed') book.intro();
 
-  window.__briesje = {
+  window.__briesie = {
     book,
     ready: true,
     tocPoint: (n) => {

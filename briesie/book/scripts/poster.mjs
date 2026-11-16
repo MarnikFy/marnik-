@@ -12,8 +12,8 @@ for (const [name, viewport] of Object.entries(sizes)) {
   const ctx = await browser.newContext({ viewport, deviceScaleFactor: 2 });
   const page = await ctx.newPage();
   await page.goto(base + '?still', { waitUntil: 'load' });
-  await page.waitForFunction(() => window.__briesje?.ready, null, { timeout: 60000 });
-  await page.evaluate(() => window.__briesje.book.renderNow());
+  await page.waitForFunction(() => window.__briesie?.ready, null, { timeout: 60000 });
+  await page.evaluate(() => window.__briesie.book.renderNow());
   await page.waitForTimeout(500);
   const png = await page.locator('#boek').screenshot();
   const info = await sharp(png).webp({ quality: 72 }).toFile(`public/poster-${name}.webp`);

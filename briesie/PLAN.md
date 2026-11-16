@@ -1,4 +1,4 @@
-# Plan website Briesje
+# Plan website Briesie
 
 Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "Open vragen" staat, is nog niet beslist en wordt niet door de bouwer ingevuld.
 
@@ -6,8 +6,10 @@ Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "
 
 * **Het boek is gevonden.** Het gaat om *Eikeltje Siem en het betoverende stofje* van Helma Buijs: 91 bladzijden, voor 6 tot 9 jaar, uitgegeven in 2024. Alle gegevens met bron staan in `INHOUD.md`.
 * **Vier beelden zijn gevonden** in de uploads bij Higgsfield: een foto van de kaft, Siem, het groene figuurtje en het stofje. Het prototype gebruikt ze.
-* **De tekst van het boek ontbreekt nog.** De bladzijden in het prototype zijn placeholder.
-* **De naam Briesje is al in gebruik** door een andere organisatie, op briesje.com. Zie `SEO.md` voor het advies.
+* **Een stukje uit het kinderboek zelf ontbreekt nog.**
+* **De naam is Briesie**, met "ie". Die naam is vrij. Zie `SEO.md`.
+* **De teksten van Helma staan in het boek op de site.** Elk verhaal is één spread: Waar het begon, De wereld van Briesie en Eikeltje Siem.
+* **Helma's verbeterpunten zijn verwerkt**: vrolijker kleuren, geen boom, het eikeltje en het mannetje in beeld. Zie `INHOUD.md`.
 * **Het prototype volgt nu het echte boek** in kaft, kleuren en letter. Zie `book/`.
 
 ## Vastgelegde keuzes
@@ -24,7 +26,7 @@ Dit document is leidend voor de bouw. Wat hier staat is afgesproken. Wat onder "
 | Verhalen | Tekst met een paar tekeningen per verhaal, in het gedrukte boek |
 | Oude site en bestanden | Staan lokaal, moeten nog geüpload worden |
 | Verhalen op de site | Een paar, om aandacht te trekken en het boek te verkopen. Niet het hele boek. |
-| Repository | Privé repo `briesje`, los van andere projecten |
+| Repository | Privé repo `briesie`, los van andere projecten |
 
 ## Waarom de vorige site "AI" oogde, en wat we anders doen
 
@@ -67,13 +69,13 @@ Het boek zelf (vorm, beweging, bladeren) staat los van het beeld en kan dus al g
 6. **Verhaal kiezen.** Het boek bladert zichtbaar een paar pagina's door naar het verhaal. Het bladeren duurt nooit langer dan 1,5 seconde, hoe ver het verhaal ook achterin staat. Het verhaal heeft een eigen link.
 7. **Lezen.** Bladeren gaat door een hoek te pakken en te slepen, door te swipen, met pijlen op het scherm of met het toetsenbord. Op een telefoon in portretstand staat de camera op één pagina tegelijk.
 8. **Einde van een verhaal.** Er verschijnt een link naar het volgende verhaal, een knop om het boek te kopen, en de knuffel van het personage uit dit verhaal.
-9. **Onder het boek.** Wie naar beneden scrollt, komt bij een gewone, snelle shop: het boek, de knuffels, de accessoires en iets over Briesje.
+9. **Onder het boek.** Wie naar beneden scrollt, komt bij een gewone, snelle shop: het boek, de knuffels, de accessoires en iets over Briesie.
 
 Menu en winkelwagen zijn altijd zichtbaar. Niemand komt vast te zitten in het 3D boek.
 
 ### Webshop
 * **Pagina's:** home, collectie (alles, knuffels, accessoires), productpagina, winkelwagen als zijpaneel, en checkout via Shopify.
-* **Informatiepagina's:** over Briesje, contact, veelgestelde vragen, verzenden en retour.
+* **Informatiepagina's:** over Briesie, contact, veelgestelde vragen, verzenden en retour.
 * **Verplicht voor een Nederlandse webshop:** algemene voorwaarden, privacybeleid, retourbeleid en bedrijfsgegevens (naam, adres, KvK, btw-nummer). Templates mogen een startpunt zijn, maar worden aangepast aan jullie situatie.
 * **Productfoto's:** echte foto's van de producten, geen AI-beeld.
 
@@ -106,7 +108,7 @@ Menu en winkelwagen zijn altijd zichtbaar. Niemand komt vast te zitten in het 3D
 * Eerst het boek los, met Vite en een testpagina. Zo kan het snel en zonder Shopify worden bijgestuurd en met Playwright getest.
 * Daarna het thema, en dan pas samenvoegen.
 
-**Repository:** privé repo `briesje`. In de hoofdmap staan dit plan, `CLAUDE.md` en `bestanden/`. Later komen daar `theme/` voor het Shopify thema en `book/` voor de broncode van het 3D boek bij.
+**Repository:** privé repo `briesie`. In de hoofdmap staan dit plan, `CLAUDE.md` en `bestanden/`. Later komen daar `theme/` voor het Shopify thema en `book/` voor de broncode van het 3D boek bij.
 
 ## Fasering
 
@@ -127,7 +129,7 @@ Fase 3 komt bewust vroeg. Het boek is het spannendste en risicovolste deel. Voel
 
 ## Wat ik van jou nodig heb
 
-1. **Privé repository.** Maak op github.com een lege, privé repo `briesje` aan en geef de Claude GitHub App toegang. De stappen staan in `README.md`.
+1. **Privé repository.** Maak op github.com een lege, privé repo `briesie` aan en geef de Claude GitHub App toegang. De stappen staan in `README.md`.
 2. **Bestanden uploaden.** De oude site (code of screenshots van elke pagina), alle verhalen, productinformatie (namen, prijzen, foto's) en, als die er zijn, logo en huisstijl en een tekst over jullie. Waar je ze neerzet staat in `bestanden/README.md`.
 3. **Kaft en foto's.** Het drukbestand of een scan van de kaft, en vrijstaande foto's van de knuffels. Zie "Beeld" hierboven.
 4. **Shopify.** Een winkel aanmaken (proefperiode is genoeg) en de Shopify-koppeling in claude.ai verbinden.
@@ -154,4 +156,4 @@ Fase 3 komt bewust vroeg. Het boek is het spannendste en risicovolste deel. Voel
 * Zijn de originele tekeningen bewaard op hoge resolutie?
 * Welke accessoires precies?
 * Voor welke leeftijd zijn de verhalen?
-* Wie zitten er achter Briesje, en wat mag daarover op de site?
+* Wie zitten er achter Briesie, en wat mag daarover op de site?

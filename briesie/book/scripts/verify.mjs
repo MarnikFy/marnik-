@@ -25,11 +25,11 @@ const profiles = {
   telefoon: { ...devices['iPhone 13'] },
 };
 const browser = await chromium.launch({ args: ['--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
-const st = (page) => page.evaluate(() => window.__briesje.book.state());
+const st = (page) => page.evaluate(() => window.__briesie.book.state());
 const until = (page, fn, arg) => page.waitForFunction(fn, arg, { timeout: 30000 });
-const ready = (page) => until(page, () => window.__briesje?.ready);
+const ready = (page) => until(page, () => window.__briesie?.ready);
 const at = (page, spread, side) =>
-  until(page, ([s, d]) => { const x = window.__briesje.book.state(); return x.mode === 'open' && x.spread === s && (d == null || x.side === d); }, [spread, side ?? null]);
+  until(page, ([s, d]) => { const x = window.__briesie.book.state(); return x.mode === 'open' && x.spread === s && (d == null || x.side === d); }, [spread, side ?? null]);
 
 for (const [name, prof] of Object.entries(profiles)) {
   const mobile = name === 'telefoon';
@@ -67,31 +67,25 @@ for (const [name, prof] of Object.entries(profiles)) {
     await page.waitForTimeout(300);
     await shot('2-inhoud');
 
-    // Een verhaal dat niet op de site staat
-    let p = await page.evaluate(() => window.__briesje.tocPoint(4));
-    await page.mouse.click(p.x, p.y);
-    await page.waitForTimeout(300);
-    check(name, 'gesloten verhaal toont "staat in het boek"', await page.evaluate(() => document.getElementById('locked').open));
-    await page.click('#lockedClose');
-
-    // Verhaal 2 kiezen
-    p = await page.evaluate(() => window.__briesje.tocPoint(1));
+    // Het eerste verhaal kiezen
+    let p = await page.evaluate(() => window.__briesie.tocPoint(0));
     const t0 = Date.now();
     await page.mouse.click(p.x, p.y);
-    await at(page, 3);
-    check(name, 'tik op Verhaal 2 bladert naar dat verhaal', true, `${Date.now() - t0} ms in deze testbrowser`);
-    check(name, 'adres is #verhaal-2', (await page.evaluate(() => location.hash)) === '#verhaal-2');
+    await at(page, 1);
+    check(name, 'tik op een verhaal bladert naar dat verhaal', true, `${Date.now() - t0} ms in deze testbrowser`);
+    check(name, 'adres is #waar-het-begon', (await page.evaluate(() => location.hash)) === '#waar-het-begon');
     await page.waitForTimeout(300);
     await shot('3-verhaal');
 
     // Bladeren: knop, toetsenbord en slepen
     if (mobile) {
       await page.click('#next');
-      await at(page, 3, 1);
+      await at(page, 1, 1);
       check(name, 'knop volgende: naar de rechterbladzijde', true);
+      await shot('3b-rechts');
     } else {
       await page.keyboard.press('ArrowRight');
-      await at(page, 4);
+      await at(page, 2);
       check(name, 'pijltjestoets slaat een bladzijde om', true);
     }
     const cx = box.x + box.width * (mobile ? 0.8 : 0.7);
@@ -103,18 +97,18 @@ for (const [name, prof] of Object.entries(profiles)) {
     await shot('4-halverwege-omslaan');
     await page.mouse.move(cx - box.width * (mobile ? 0.6 : 0.32), cy, { steps: 6 });
     await page.mouse.up();
-    await at(page, mobile ? 4 : 5, mobile ? 0 : null);
+    await at(page, mobile ? 2 : 3, mobile ? 0 : null);
     check(name, 'slepen aan de bladzijde slaat hem om', true);
-    await page.click('#next');
-    await at(page, mobile ? 4 : 6, mobile ? 1 : null);
-    check(name, 'knop volgende werkt', true);
+    if (mobile) { await page.click('#next'); await at(page, 2, 1); check(name, 'knop volgende werkt', true); }
+    else check(name, 'aan het einde van het boek kan volgende niet meer', await page.evaluate(() => document.getElementById('next').disabled));
 
     // Einde van een verhaal
-    if (!mobile) { await page.click('#prev'); await at(page, 5); await page.click('#prev'); await at(page, 4); }
     await page.waitForTimeout(200);
-    const end = await page.evaluate(() => ({ shown: !document.getElementById('end').hidden, next: document.getElementById('nextStory').getAttribute('aria-label') }));
-    check(name, 'einde verhaal toont volgende verhaal en koopknop', end.shown && /Verhaal 3/.test(end.next || ''), end.next);
+    const end = await page.evaluate(() => ({ shown: !document.getElementById('end').hidden, next: document.getElementById('nextStory').hidden ? '' : document.getElementById('nextStory').getAttribute('aria-label'), buy: !!document.querySelector('#end a[href="#winkel"]') }));
+    check(name, 'einde verhaal toont de koopknop', end.shown && end.buy, end.next || 'laatste verhaal');
     await shot('5-einde-verhaal');
+    const here = await st(page);
+    const hereHash = await page.evaluate(() => location.hash);
 
     // Kopen: één tik naar de winkel, en terug
     await page.click('.bar a.btn');
@@ -124,20 +118,20 @@ for (const [name, prof] of Object.entries(profiles)) {
     await page.goBack();
     await page.waitForTimeout(700);
     const back = await st(page);
-    check(name, 'terugknop van de browser brengt je terug in het verhaal', back.mode === 'open' && back.spread === 4 && (await page.evaluate(() => location.hash)) === '#verhaal-2');
+    check(name, 'terugknop van de browser brengt je terug in het verhaal', back.mode === 'open' && back.spread === here.spread && (await page.evaluate(() => location.hash)) === hereHash);
 
     // Direct binnenkomen op een verhaal
-    await page.goto(base + '#verhaal-3', { waitUntil: 'load' });
+    await page.goto(base + '#de-wereld-van-briesie', { waitUntil: 'load' });
     await page.reload();
     await ready(page);
     const direct = await st(page);
-    check(name, 'directe link opent het boek op dat verhaal', direct.mode === 'open' && direct.spread === 5);
+    check(name, 'directe link opent het boek op dat verhaal', direct.mode === 'open' && direct.spread === 2);
 
     // Dichtdoen
     await page.evaluate(() => window.scrollTo(0, 0));
     if (mobile) await page.click('#close');
     else await page.keyboard.press('Escape');
-    await until(page, () => window.__briesje.book.state().mode === 'closed');
+    await until(page, () => window.__briesie.book.state().mode === 'closed');
     check(name, mobile ? 'knop Boek dicht sluit het boek' : 'Escape sluit het boek', (await page.evaluate(() => location.hash)) === '');
 
     // Alleen toetsenbord
@@ -173,7 +167,7 @@ for (const [name, prof] of Object.entries(profiles)) {
   await page.goto(base, { waitUntil: 'load' });
   await ready(page);
   // Zonder beweging staat het boek direct open, in dezelfde stap als de tik.
-  const mode = await page.evaluate(() => { window.__briesje.book.open(); return window.__briesje.book.state().mode; });
+  const mode = await page.evaluate(() => { window.__briesie.book.open(); return window.__briesie.book.state().mode; });
   check('beweging verminderen', 'boek staat direct open, zonder draaiende beweging', mode === 'open', mode);
   await ctx.close();
 }

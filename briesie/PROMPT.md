@@ -1,6 +1,6 @@
 # Startprompt
 
-De werkregels staan in `CLAUDE.md` en worden automatisch gelezen. Start een nieuwe Claude Code sessie op de repo `briesje` en plak dit, met het juiste fasenummer:
+De werkregels staan in `CLAUDE.md` en worden automatisch gelezen. Start een nieuwe Claude Code sessie op de repo `briesie` en plak dit, met het juiste fasenummer:
 
 ---
 

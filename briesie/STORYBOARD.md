@@ -1,4 +1,4 @@
-# Storyboard website Briesje
+# Storyboard website Briesie
 
 De site heeft zelf een verhaallijn: je komt binnen, opent het boek, leest, en houdt er iets aan over dat je kunt kopen. Dit document legt per moment vast wat de bezoeker voelt, doet en ziet. Er wordt niets gebouwd dat hier niet in staat.
 
@@ -12,7 +12,7 @@ Dit is stap 1 van de bouw. Er is nog geen code. De keuzes hierin zijn gebaseerd 
 | 1 | Binnenkomen | Nieuwsgierig: dit is een echt boek. | Kijkt | De camera komt in één beweging tot rust voor het boek. Het stilstaande beeld gaat ongemerkt over in 3D. | 1,5 s, eenmalig | 1 |
 | 2 | Uitnodiging | "Ik mag eraan komen." | Beweegt muis of telefoon, tikt | Het boek ademt licht en draait een paar graden mee. Eén korte regel: "Tik om het boek te openen". | Tot de tik | 1 |
 | 3 | Openen | Verwachting, zoals bij een cadeau uitpakken | Tikt op het boek | Het boek draait naar je toe, de kaft klapt open over de rug, de camera zakt naar de eerste spread. Het betoverende stofje stuift op. De figuurtjes schuiven uit beeld, zodat het boek alle aandacht krijgt. | 1,2 s | 1 |
-| 4 | Inhoudsopgave | Overzicht en keuze | Kiest een verhaal | Links: wat Briesje is, in twee zinnen, met de knop "Bestel het boek". Rechts: de verhaaltjes met een kleine tekening. | Zo lang als nodig | 1 |
+| 4 | Inhoudsopgave | Overzicht en keuze | Kiest een verhaal | Links: wat Briesie is, in twee zinnen, met de knop "Bestel het boek". Rechts: de verhaaltjes met een kleine tekening. | Zo lang als nodig | 1 |
 | 5 | Naar het verhaal | Plezier: het boek doet wat een boek doet | Kijkt | De bladzijden bladeren zichtbaar door naar het gekozen verhaal. De link in de adresbalk verandert mee. | Maximaal 1,5 s | 1 |
 | 6 | Lezen | Rust. Het boek staat het verhaal niet in de weg. | Bladert: slepen aan een hoek, swipen, pijlen of toetsenbord | Tekst en tekening zoals in het gedrukte boek. Op de telefoon één bladzijde tegelijk. Een dunne streep toont hoe ver je bent. | Per bladzijde 0,6 s om te slaan | 1 |
 | 7 | Einde verhaal | "Dit wil ik thuis ook." | Kiest: verder lezen of kopen | Op de laatste bladzijde: het volgende verhaal, de knop "Bestel het boek" en de knuffel die bij dit verhaal hoort. | Zo lang als nodig | 1 |
@@ -81,3 +81,11 @@ Nog te kiezen: welke verhalen het worden. Kies de sterkste, niet de eerste. Eén
 * Naast het boek staan nu de tekeningen van Siem en het groene figuurtje, niet de foto's van de knuffels. Die foto's zijn er nog niet.
 * Tik je op een figuurtje, dan springt het op. De weg naar de winkel loopt via de knop in het menu.
 * Bij het openen stuift het betoverende stofje op: een handvol gouden glinsteringen, één keer. Boven het dichte boek glinstert er één, als uitnodiging.
+
+## Bijgewerkt na de aantekeningen van Helma
+
+* **De verhalen in het boek zijn de verhalen van Helma**: Waar het begon, De wereld van Briesie en Eikeltje Siem. Elk verhaal is één spread.
+* **De laatste rechterbladzijde ligt op het boekblok.** Zo zie je dat de rest van het boek er nog onder zit.
+* **Bij het dichte boek staat "Laat je meenemen..."**, de regel van Helma.
+* **De voortgangsstreep loopt nu over het hele boek**, niet per verhaal.
+* **Er zijn geen gesloten verhalen meer.** Dat komt terug zodra er stukjes uit het kinderboek zijn.

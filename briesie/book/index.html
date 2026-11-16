@@ -8,10 +8,10 @@
     <meta name="description" content="Eikeltje Siem en het betoverende stofje is een kinderboek van Helma Buijs voor 6 tot 9 jaar. Blader door het boek en lees alvast een paar verhalen." />
     <meta property="og:type" content="book" />
     <meta property="og:locale" content="nl_NL" />
-    <meta property="og:site_name" content="Briesje" />
+    <meta property="og:site_name" content="Briesie" />
     <meta property="og:title" content="Eikeltje Siem en het betoverende stofje" />
-    <meta property="og:description" content="Kinderboek van Helma Buijs voor 6 tot 9 jaar. Zo klein, maar toch zo groot." />
-    <meta name="theme-color" content="#e7f0db" />
+    <meta property="og:description" content="Het kinderboek van Helma Buijs, voor 6 tot 9 jaar. Zo klein, maar toch zo groot." />
+    <meta name="theme-color" content="#fff3bf" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -36,7 +36,7 @@
     <a class="skip" href="#lezen">Naar de verhalen als gewone tekst</a>
 
     <header class="bar">
-      <a class="mark" href="#boek">Briesje</a>
+      <a class="mark" href="#boek">Briesie <span>van naaldfiguurtjes tot mijn eigen kinderboek</span></a>
       <nav aria-label="Hoofdmenu">
         <a href="#winkel">Winkel</a>
         <a class="btn btn-solid" href="#winkel">Bestel het boek</a>
@@ -56,7 +56,7 @@
           <p>Een kinderboek van Helma Buijs, voor 6 tot 9 jaar. <em>Zo klein, maar toch zo groot.</em></p>
         </div>
 
-        <button class="hint" id="open" type="button">Tik om het boek te openen</button>
+        <button class="hint" id="open" type="button"><strong>Laat je meenemen...</strong> <span>tik om het boek te openen</span></button>
 
         <nav class="keys" aria-label="Verhalen in het boek" id="keys"></nav>
 
@@ -75,7 +75,7 @@
             <a class="btn" id="nextStory" href="#"></a>
             <a class="btn btn-solid" href="#winkel">Bestel het boek</a>
           </div>
-          <div class="progress" id="progress" role="progressbar" aria-label="Voortgang in dit verhaal" aria-valuemin="0" aria-valuemax="100" hidden><span></span></div>
+          <div class="progress" id="progress" role="progressbar" aria-label="Voortgang in het boek" aria-valuemin="0" aria-valuemax="100" hidden><span></span></div>
         </div>
 
         <button class="btn mode" id="mode" type="button" aria-pressed="false">Leesmodus</button>
@@ -86,7 +86,7 @@
 
       <section class="shop" id="winkel" aria-labelledby="winkel-kop">
         <h2 id="winkel-kop">Winkel</h2>
-        <p class="note">De prijzen en de foto's van de knuffels en accessoires volgen nog.</p>
+        <p class="note">De prijzen en de foto's van de figuurtjes en accessoires volgen nog.</p>
         <ul class="products">
           <li>
             <img id="shopCover" src="/echt/kaft.webp" alt="Kaft van Eikeltje Siem en het betoverende stofje" loading="lazy" width="1024" height="1472" />
@@ -94,20 +94,12 @@
             <small>Helma Buijs. Gebonden, 91 bladzijden, voor 6 tot 9 jaar.</small>
             <span>prijs volgt</span>
           </li>
-          <li><div class="ph"></div><strong>Knuffels</strong><span>foto en prijs volgen</span></li>
+          <li><div class="ph"></div><strong>Naaldvilten figuurtjes</strong><span>foto en prijs volgen</span></li>
           <li><div class="ph"></div><strong>Accessoires</strong><span>foto en prijs volgen</span></li>
         </ul>
       </section>
     </main>
 
-    <dialog id="locked" aria-labelledby="locked-kop">
-      <h2 id="locked-kop">Dit verhaal staat in het boek</h2>
-      <p>Op de site staan een paar verhalen. De rest lees je in het boek.</p>
-      <div class="row">
-        <a class="btn btn-solid" href="#winkel" id="lockedBuy">Bestel het boek</a>
-        <button class="btn" type="button" id="lockedClose">Sluiten</button>
-      </div>
-    </dialog>
 
     <script type="module" src="./src/main.js"></script>
   </body>
