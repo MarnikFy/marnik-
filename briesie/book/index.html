@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eikeltje Siem en het betoverende stofje | Kinderboek van Helma Buijs</title>
+    <meta name="claude:viewport-fit-sides" content="cover" />
+    <meta name="description" content="Eikeltje Siem en het betoverende stofje is een kinderboek van Helma Buijs voor 6 tot 9 jaar. Blader door het boek en lees alvast een paar verhalen." />
+    <meta property="og:type" content="book" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content="Briesie" />
+    <meta property="og:title" content="Eikeltje Siem en het betoverende stofje" />
+    <meta property="og:description" content="Het kinderboek van Helma Buijs, voor 6 tot 9 jaar. Zo klein, maar toch zo groot." />
+    <meta name="theme-color" content="#fff3bf" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "Eikeltje Siem en het betoverende stofje",
+        "author": { "@type": "Person", "name": "Helma Buijs" },
+        "isbn": "9789464915594",
+        "numberOfPages": 91,
+        "inLanguage": "nl",
+        "bookFormat": "https://schema.org/Hardcover",
+        "publisher": { "@type": "Organization", "name": "Boekengilde" },
+        "datePublished": "2024",
+        "typicalAgeRange": "6-9",
+        "genre": "Kinderboek"
+      }
+    </script>
+    <link rel="preload" as="image" href="/poster-wide.webp" media="(min-aspect-ratio: 85/100)" />
+    <link rel="preload" as="image" href="/poster-tall.webp" media="(max-aspect-ratio: 85/100)" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#lezen">Naar de verhalen als gewone tekst</a>
+
+    <!--@header-->
+
+    <main>
+      <section class="hero" id="boek" aria-label="Het boek">
+        <picture>
+          <source media="(max-aspect-ratio: 85/100)" srcset="/poster-tall.webp" />
+          <img class="poster" id="poster" src="/poster-wide.webp" alt="Het boek Eikeltje Siem en het betoverende stofje, met Siem ernaast" />
+        </picture>
+        <div class="stage" id="stage"></div>
+
+        <div class="title">
+          <h1>Eikeltje Siem <span>en het betoverende stofje</span></h1>
+          <p>Een kinderboek van Helma Buijs, voor 6 tot 9 jaar. <em>Zo klein, maar toch zo groot.</em></p>
+        </div>
+
+        <button class="hint" id="open" type="button"><strong>Laat je meenemen...</strong> <span>tik om het boek te openen</span></button>
+
+        <nav class="keys" aria-label="Verhalen in het boek" id="keys"></nav>
+
+        <div class="ui" id="ui" hidden>
+          <button class="round prev" id="prev" type="button" aria-label="Vorige bladzijde">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button class="round next" id="next" type="button" aria-label="Volgende bladzijde">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <div class="tools">
+            <button class="btn" id="toc" type="button">Inhoud</button>
+            <button class="btn" id="close" type="button">Boek dicht</button>
+          </div>
+          <div class="end" id="end" hidden>
+            <a class="btn" id="nextStory" href="#"></a>
+            <a class="btn btn-solid" href="./boek.html">Bestel het boek</a>
+          </div>
+          <div class="progress" id="progress" role="progressbar" aria-label="Voortgang in het boek" aria-valuemin="0" aria-valuemax="100" hidden><span></span></div>
+        </div>
+
+        <button class="btn mode" id="mode" type="button" aria-pressed="false">Leesmodus</button>
+        <p class="live" id="live" aria-live="polite"></p>
+      </section>
+
+      <a class="buybar" href="./boek.html">
+        <img src="/echt/kaft.webp" alt="" width="44" height="63" onerror="this.remove()" />
+        <span class="bb-text"><strong>Het boek</strong><span>Gebonden, 91 bladzijden</span></span>
+        <span class="bb-price">€ 14,95</span>
+        <span class="btn btn-solid">Bestel het boek</span>
+      </a>
+
+      <section class="reader" id="lezen" aria-label="De verhalen als gewone tekst"></section>
+
+      <section class="sec sec-book" id="het-boek" aria-labelledby="boek-kop">
+        <div class="wrap two">
+          <div class="pic">
+            <img class="frame" src="/echt/kaft.webp" alt="De kaft van Eikeltje Siem en het betoverende stofje" loading="lazy" width="1024" height="1472" />
+            <img class="pop" src="/echt/figuur-groen.webp" alt="" loading="lazy" width="529" height="560" />
+          </div>
+          <div class="copy">
+            <h2 id="boek-kop">Over het boek</h2>
+            <p class="lead">Eikeltje is niet zo dapper; hij is bang om opgegeten te worden. Hij ontmoet Kiki de kraai en Pippa het roodborstje.</p>
+            <p>Samen beleven ze grootse avonturen, en Eikeltje ontdekt dat hij veel dapperder is dan hij altijd dacht.</p>
+            <p class="hand">Zo klein, maar toch zo groot.</p>
+            <ul class="facts">
+              <li>Voor kinderen van 6 tot 9 jaar</li>
+              <li>Gebonden, 91 bladzijden</li>
+              <li>Geschreven door Helma Buijs</li>
+            </ul>
+            <div class="row">
+              <a class="btn btn-solid" href="./boek.html">Bekijk het boek, € 14,95</a>
+              <a class="btn" href="#inhoud">Blader erin</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec sec-helma" id="helma" aria-labelledby="helma-kop">
+        <div class="wrap two flip">
+          <div class="copy">
+            <h2 id="helma-kop">Waar het begon</h2>
+            <p class="lead">Soms begint iets kleins waar je zo enthousiast van wordt.</p>
+            <p>De naam Briesie is ontstaan door iets tot stand te laten komen. Briesie is Zuid-Afrikaans, daar heb ik in mijn kinderjaren gewoond en het betekent een klein briesje.</p>
+            <p>Dit is het betoverende stofje uit het kinderboek wat met een zacht briesje een wereld tot leven komt.</p>
+            <p>Mijn naam is Helma Buijs. Ik ben het gezicht achter Briesie. Een plek waar creativiteit, kleur en klein handgemaakte details samenkomen.</p>
+            <p>Wat begon met liefde voor verhalen en illustraties, groeide uit tot iets tastbaars. Ik ontdekte naaldvilten, zachte wol die langzaam verandert in kleine figuurtjes.</p>
+            <p class="hand big">Welkom in mijn wereld <span aria-hidden="true">&#9829;</span></p>
+          </div>
+          <div class="pic pic-helma">
+            <img class="dust" src="/echt/stofje.webp" alt="" loading="lazy" width="320" height="269" />
+            <img class="siem" src="/echt/siem.webp" alt="Eikeltje Siem" loading="lazy" width="553" height="560" />
+          </div>
+        </div>
+      </section>
+
+      <section class="sec shop" id="winkel" aria-labelledby="winkel-kop">
+        <div class="wrap">
+          <h2 id="winkel-kop">Winkel</h2>
+          <p class="note" id="verzending"></p>
+          <ul class="products" id="producten"></ul>
+        </div>
+      </section>
+
+      <section class="sec sec-faq" id="vragen" aria-labelledby="vragen-kop">
+        <div class="wrap narrow">
+          <h2 id="vragen-kop">Veelgestelde vragen</h2>
+          <details>
+            <summary>Voor welke leeftijd is het boek?</summary>
+            <p>Voor kinderen van 6 tot 9 jaar. Voorlezen kan natuurlijk ook.</p>
+          </details>
+          <details>
+            <summary>Wat zijn de verzendkosten?</summary>
+            <p>Verzending binnen Nederland kost € 2,95 en is gratis vanaf € 25. We versturen je bestelling zo snel mogelijk.</p>
+          </details>
+          <details>
+            <summary>Zijn de figuurtjes handgemaakt?</summary>
+            <p>Ja. Alle figuurtjes worden met de hand gevilt van zachte wol. Geen twee zijn precies hetzelfde.</p>
+          </details>
+          <details>
+            <summary>Kan ik er een persoonlijk berichtje bij doen?</summary>
+            <p>Zeker. Bij het bestellen kun je een opmerking achterlaten, bijvoorbeeld een naam voor op het kaartje.</p>
+          </details>
+          <details>
+            <summary>Kan ik ruilen of terugsturen?</summary>
+            <p>Je hebt 14 dagen bedenktijd.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <!--@footer-->
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

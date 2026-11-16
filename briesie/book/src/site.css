@@ -1,0 +1,135 @@
+/* Alles onder het boek: de secties van de homepage, de productpagina en de voet.
+   Vorm: zwarte lijntjes en een harde schaduw, zoals de getekende figuurtjes. */
+
+:root { --peek: 84px; --edge: 2px solid var(--ink); --drop: 5px 5px 0 var(--ink); --pink-soft: #ffe0ee; }
+
+.wrap { max-width: 68rem; margin: 0 auto; padding-left: var(--gl); padding-right: var(--gr); }
+.wrap.narrow { max-width: 44rem; }
+.sec { padding-block: clamp(48px, 8vw, 96px); }
+.sec h2 { font: 900 clamp(30px, 4.6vw, 46px)/1.08 var(--serif); letter-spacing: -0.02em; color: var(--accent); margin: 0 0 20px; text-wrap: balance; }
+.sec p { font: 600 18px/1.6 var(--sans); margin: 0 0 14px; max-width: 34rem; }
+.sec .lead { font-size: clamp(20px, 2.4vw, 23px); font-weight: 700; line-height: 1.45; }
+.hand, .sec p.hand { font: italic 800 20px/1.3 var(--serif); color: var(--green); }
+.sec p.hand.big { font-size: clamp(26px, 3.6vw, 34px); color: var(--accent); margin-top: 22px; }
+.hand.big span { color: #e8443a; font-style: normal; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.btn-solid, .btn-big { box-shadow: 3px 3px 0 var(--ink); border-color: var(--ink); }
+.btn-solid:hover { box-shadow: 5px 5px 0 var(--ink); border-color: var(--ink); }
+.btn-big { min-height: 54px; padding: 0 28px; font-size: 18px; width: 100%; max-width: 22rem; }
+.btn[disabled] { background: #e9e3c4; color: var(--soft); box-shadow: none; border-style: dashed; cursor: default; }
+.mail { font-weight: 800; user-select: all; }
+
+.facts { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 8px; }
+.facts li { font: 700 17px/1.4 var(--sans); padding-left: 30px; position: relative; }
+.facts li::before { content: ""; position: absolute; left: 2px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--gold, #f2c230); border: var(--edge); }
+.facts li:nth-child(2)::before { background: var(--accent); }
+.facts li:nth-child(3)::before { background: var(--blue); }
+
+/* Twee kolommen op een breed scherm, onder elkaar op een telefoon */
+.two { display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; }
+@media (min-width: 820px) {
+  .two { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+  .two.flip { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+}
+.frame { display: block; width: 100%; height: auto; border: var(--edge); border-radius: 6px; box-shadow: var(--drop); background: var(--paper); }
+.pic { position: relative; max-width: 24rem; margin: 0 auto; width: 78%; }
+.pic .frame { transform: rotate(-3deg); }
+.pic .pop { position: absolute; right: -18%; bottom: -9%; width: 52%; height: auto; }
+.pic-helma { aspect-ratio: 1; width: 70%; }
+.pic-helma .siem { position: absolute; inset: 14% 8% 0 14%; width: 78%; height: auto; }
+.pic-helma .dust { position: absolute; left: -4%; top: -2%; width: 46%; height: auto; }
+
+/* De koopstrook: staat onder het boek, nog op het eerste scherm */
+.buybar { display: flex; align-items: center; gap: 12px; height: var(--peek); padding-left: var(--gl); padding-right: var(--gr); background: var(--paper); border-top: var(--edge); border-bottom: var(--edge); text-decoration: none; }
+.buybar img { height: 58px; width: auto; border: 1.5px solid var(--ink); border-radius: 3px; transform: rotate(-4deg); }
+.bb-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; margin-right: auto; }
+.bb-text strong { font: 900 18px/1.2 var(--serif); }
+.bb-text span { font-size: 14px; color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bb-price { font: 900 22px/1 var(--serif); color: var(--green); white-space: nowrap; }
+body.textmode .buybar { margin-top: 12px; }
+@media (max-width: 480px) { .bb-text span { display: none; } .buybar .btn { padding: 0 14px; } }
+
+.sec-book { background: var(--paper); }
+.sec-helma { background: var(--pink-soft); border-top: var(--edge); border-bottom: var(--edge); }
+.sec-faq { background: var(--paper); border-top: var(--edge); }
+
+/* Winkel */
+.sec.shop { min-height: 0; background: var(--band); border-top: var(--edge); padding-block: clamp(48px, 8vw, 96px); }
+.sec.shop h2 { height: auto; display: block; color: var(--green); }
+.sec.shop .note { color: var(--ink); margin: 0 0 28px; }
+.products { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 16px; max-width: none; }
+@media (min-width: 720px) { .products { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 28px 22px; } }
+.products .card { background: var(--paper); border: var(--edge); border-radius: 12px; box-shadow: var(--drop); padding: 12px 12px 16px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; }
+.products a.card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.products li { display: contents; }
+.products .card img, .products .card .ph, .products .card .duo { border-radius: 8px; margin-bottom: 8px; aspect-ratio: 4 / 5; width: 100%; }
+.products .card img { object-fit: cover; padding: 0; background: #f4f1e2; }
+.products .card strong { font: 800 17px/1.25 var(--serif); }
+.products .card .price { font-size: 22px; margin-top: auto; padding-top: 8px; }
+.products .card .more { font: 800 14px/1 var(--sans); color: var(--accent); margin-top: 6px; }
+.duo { position: relative; background: #fff3c9; overflow: hidden; }
+.products .card .duo img { position: absolute; margin: 0; aspect-ratio: auto; background: none; border-radius: 3px; }
+.products .card .duo img:first-child { left: 14%; top: 8%; width: 60%; height: auto; border: 1.5px solid var(--ink); transform: rotate(-5deg); box-shadow: 3px 3px 0 var(--ink); }
+.products .card .duo img:last-child { right: 3%; bottom: 4%; width: 50%; height: auto; }
+/* Het cadeaupakket krijgt de meeste ruimte */
+@media (min-width: 720px) {
+  .products .card.big { flex-direction: row; gap: 18px; align-items: stretch; }
+  .products .card.big .duo { width: 48%; flex: none; margin: 0; aspect-ratio: 4 / 5; align-self: flex-start; }
+  .products .card.big .txt { display: flex; flex-direction: column; gap: 6px; padding: 8px 4px; }
+  .products .card.big strong { font-size: 24px; }
+  .products .card.big small { font-size: 16px; }
+}
+.products .card .txt { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+
+/* Veelgestelde vragen */
+details { border-bottom: var(--edge); }
+details:first-of-type { border-top: var(--edge); }
+summary { font: 800 19px/1.35 var(--serif); padding: 18px 40px 18px 0; cursor: pointer; list-style: none; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font: 900 28px/1 var(--serif); color: var(--accent); }
+details[open] summary::after { content: "\2212"; }
+details p { padding-bottom: 18px; }
+
+/* Voet */
+.foot { position: relative; background: var(--green); color: #fff; padding-block: 48px 40px; border-top: var(--edge); overflow: hidden; }
+.foot-grid { display: grid; gap: 32px; }
+@media (min-width: 720px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1.3fr; } }
+.foot p { margin: 0 0 6px; font: 600 16px/1.5 var(--sans); }
+.foot-mark { font: 900 34px/1 var(--serif) !important; margin-bottom: 8px !important; }
+.foot .hand { color: #ffe27a; }
+.foot h2 { font: 800 15px/1.2 var(--sans); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px; color: #cfeeda; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.foot a { color: #fff; font-weight: 700; text-underline-offset: 4px; display: inline-block; padding: 5px 0; }
+.foot :focus-visible { outline-color: #ffe27a; }
+.foot-siem { position: absolute; right: 3%; bottom: -26px; width: 120px; height: auto; transform: rotate(8deg); }
+@media (max-width: 719px) { .foot-siem { width: 84px; bottom: -18px; } .foot { padding-bottom: 72px; } }
+
+/* Productpagina */
+body.page { background: var(--bg) url("./spatjes.svg") center top / 1600px auto no-repeat; }
+.pp { padding-top: calc(var(--bar) + 12px); }
+.back { display: inline-block; font-weight: 800; padding: 10px 0; text-underline-offset: 4px; }
+.back::before { content: "\2190\00a0"; }
+.pp-grid { display: grid; gap: 28px; padding-block: 8px clamp(40px, 7vw, 80px); align-items: start; }
+@media (min-width: 820px) { .pp-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); gap: 64px; } }
+.pp-media { position: relative; max-width: 25rem; width: 52%; margin: 6px auto 0; }
+@media (min-width: 820px) { .pp-media { width: 78%; } }
+.pp-media .frame { transform: rotate(-2.5deg); }
+.pp-media .pop { position: absolute; right: -20%; bottom: -6%; width: 46%; height: auto; }
+.pp-info .kind { font: 800 13px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin: 0 0 10px; }
+.pp-info h1 { margin: 0; font: 900 clamp(34px, 5vw, 54px)/1.02 var(--serif); letter-spacing: -0.02em; color: var(--accent); text-wrap: balance; }
+.pp-info h1 span { display: block; font-weight: 700; font-size: 0.5em; line-height: 1.25; letter-spacing: 0; margin-top: 0.25em; }
+.pp-info .by { font: 700 18px/1.3 var(--sans); margin: 12px 0 4px; }
+.pp-info .hand { margin: 0 0 18px; }
+.pp-info .price { font: 900 40px/1 var(--serif); color: var(--green); margin: 0 0 6px; }
+.pp-info .ship { margin: 0 0 18px; font-weight: 600; color: var(--soft); }
+.pp-info .soon { margin: 12px 0 16px; font-weight: 600; }
+.specs { margin: 0; display: grid; }
+.specs div { display: grid; grid-template-columns: 9rem 1fr; gap: 12px; padding: 12px 0; border-bottom: 1.5px solid var(--line); font: 600 17px/1.4 var(--sans); }
+.specs dt { color: var(--soft); }
+.specs dd { margin: 0; font-weight: 800; }
+.pp .sec h2 + p { margin-top: 0; }
+.pp .sec h2:not(:first-child) { margin-top: 40px; font-size: clamp(24px, 3.4vw, 32px); color: var(--green); }
+.pp .products { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+@media (min-width: 720px) { .pp .products { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+@media (prefers-reduced-motion: reduce) { .products a.card:hover { transform: none; } }
